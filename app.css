@@ -251,3 +251,53 @@ html,body{overflow-x:clip}
 .lib-folder{margin:0 0 14px}
 @media (max-width:640px){ .shelf-row{justify-content:flex-start;min-height:250px} .peek-card{grid-template-columns:1fr} .peek-cover{display:none} }
 @media (max-width:640px){ .bk{width:calc(var(--w,48px)*.95);height:calc(var(--h,210px)*.9)} .bk .sp-t{max-height:calc(var(--h,210px)*.9 - 70px);font-size:13px} }
+
+/* ---------- reels challenge: a departures board ---------- */
+.reel-top{display:grid;grid-template-columns:auto auto 1fr;gap:14px;align-items:stretch;margin:18px 0 16px}
+.rt-stat{background:#060C18;border:1px solid var(--line2);border-radius:16px;padding:14px 20px;display:grid;place-items:center;min-width:120px;box-shadow:inset 0 0 0 4px rgba(255,255,255,.02)}
+.rt-n{font-family:'Gotham',monospace;font-weight:900;font-size:40px;line-height:1;color:var(--accent);letter-spacing:.02em}
+.rt-n small{font-size:18px;color:var(--muted);font-weight:700}
+.rt-l{color:var(--body);font-weight:700;font-size:14px;margin-top:6px}
+.rt-now{background:linear-gradient(135deg,rgba(244,185,66,.14),rgba(127,209,255,.06));border:1px solid rgba(244,185,66,.35);border-radius:16px;padding:14px 18px}
+.rt-k{color:var(--accent);font-size:13px;font-weight:700}
+.rt-h{color:var(--ink);font-size:18px;font-weight:700;margin-top:2px}
+.rt-p{color:var(--body);font-size:14px;margin-top:2px}
+.rt-rules{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.rt-rules span{font-size:12px;color:var(--body);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.reel-board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.rw{background:#060C18;border:1px solid var(--line);border-radius:16px;padding:12px 12px 10px;display:flex;flex-direction:column;gap:8px;position:relative}
+.rw.now{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 18px 40px -20px rgba(244,185,66,.5)}
+.rw.future{opacity:.72}
+.rw header{display:flex;align-items:center;gap:8px}
+.rw h3{margin:0;font-size:16px;color:var(--ink);flex:1;line-height:1.4}
+.rw-g{font-family:'Gotham',monospace;font-weight:900;font-size:13px;color:#060C18;background:var(--accent);border-radius:6px;padding:3px 7px;letter-spacing:.06em}
+.rw-tag{font-size:11.5px;font-weight:700;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 8px}
+.rr{display:grid;grid-template-columns:auto 1fr auto auto;gap:8px;align-items:center;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:8px}
+.rr-id{font-family:'Gotham',monospace;font-weight:900;font-size:12px;color:var(--accent2);width:20px;text-align:center}
+.rr-t{font-size:13px;color:var(--body);line-height:1.55}
+.rr-go{color:var(--accent2);font-weight:700;white-space:nowrap;text-decoration:none}
+.rr-s{display:grid;justify-items:center;gap:1px;background:#0B1730;border:1px solid var(--line2);border-radius:9px;padding:4px 8px;min-width:66px;cursor:pointer;color:var(--muted);font:inherit;transition:background .2s,border-color .2s,color .2s}
+.rr-s b{font-size:12.5px}
+.rr-s i{font-style:normal;font-family:'Gotham',monospace;font-size:8.5px;letter-spacing:.12em;font-weight:700}
+.rr-s:disabled{cursor:default}
+.rr.r1 .rr-s{color:var(--accent);border-color:rgba(244,185,66,.6);background:rgba(244,185,66,.1)}
+.rr.r2 .rr-s{color:#062014;border-color:#5BD08D;background:#5BD08D}
+.rr.late .rr-s{color:#FF8A5B;border-color:rgba(255,138,91,.6)}
+.rr-l{background:none;border:1px solid var(--line);border-radius:9px;width:32px;height:32px;cursor:pointer;font-size:14px;opacity:.75}
+.rr-l:hover{opacity:1;border-color:var(--line2)}
+.rr-in{grid-column:1/-1;display:flex;gap:6px}
+.rr-in input{flex:1;min-width:0;background:var(--bg2);border:1.5px solid var(--line2);color:var(--ink);border-radius:10px;padding:7px 10px;font-size:13px}
+.rw footer{font-size:12px;color:var(--muted);margin-top:auto;padding-top:2px}
+@media (max-width:1100px){ .reel-board{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:700px){
+  .reel-top{grid-template-columns:1fr 1fr}
+  .rt-now{grid-column:1/-1}
+  .reel-board{grid-template-columns:1fr}
+}
+/* roomier rows: idea on top, status + link under it */
+.rr{grid-template-columns:auto 1fr auto;grid-template-areas:"id t t" ". s l";row-gap:8px}
+.rr-id{grid-area:id}.rr-t{grid-area:t;font-size:13.5px}
+.rr-s{grid-area:s;justify-self:start;display:inline-flex;align-items:center;gap:8px;min-width:0;padding:5px 10px}
+.rr-s i{font-size:9px}
+.rr-l{grid-area:l;width:30px;height:30px}
+.rr-in{grid-column:1/-1}

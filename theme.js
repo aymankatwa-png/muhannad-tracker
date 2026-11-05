@@ -316,6 +316,70 @@ function paintBb() {
   }).join('');
 }
 
+
+/* ---------------- the reels challenge (departures board) ---------------- */
+var reelOpen = null;
+function reel(w, i) { var v = A.get('reel:' + w + ':' + i, null); return v && typeof v === 'object' ? v : { s: 0, u: '' }; }
+function reelCount(min) { var n = 0; for (var w = 1; w <= T.weeks; w++) for (var i = 0; i < 2; i++) if (reel(w, i).s >= min) n++; return n; }
+var RS = [{ k: 'لم يبدأ', en: 'SCHEDULED', c: 'r0' }, { k: 'صُنع', en: 'READY', c: 'r1' }, { k: 'نُشر', en: 'DEPARTED', c: 'r2' }];
+function reelInit() {
+  var b = $('#reelBoard'); if (!b || !T.reels) return;
+  b.addEventListener('click', function (e) {
+    var st = e.target.closest('[data-rs]'), ln = e.target.closest('[data-rl]'), sv = e.target.closest('[data-rsave]');
+    if (st && A.isMe()) {
+      var k = st.getAttribute('data-rs').split(':'), w = +k[0], i = +k[1], v = reel(w, i);
+      v.s = (v.s + 1) % 3; A.set('reel:' + w + ':' + i, v);
+      var C = A.computed(), cw = curWeek(C);
+      if (v.s === 1 && reel(w, 1 - i).s >= 1) { A.burst(st, 26); A.toast('ريلزا الأسبوع ' + w + ' جاهزان للإقلاع ✈ — انشرهما في الأسبوع القادم'); }
+      if (v.s === 2) {
+        A.burst(st, 18);
+        if (reel(w, 1 - i).s === 2 && !A.get('c:' + cw + ':post', false)) A.set('c:' + cw + ':post', 1);
+      }
+    }
+    if (ln && A.isMe()) { var id = ln.getAttribute('data-rl'); reelOpen = reelOpen === id ? null : id; paintReels(); var inp = b.querySelector('[data-rin="' + id + '"]'); if (inp) inp.focus(); }
+    if (sv) saveLink(sv.getAttribute('data-rsave'));
+  });
+  b.addEventListener('keydown', function (e) { if (e.key === 'Enter' && e.target.matches('[data-rin]')) saveLink(e.target.getAttribute('data-rin')); });
+  function saveLink(id) {
+    var inp = b.querySelector('[data-rin="' + id + '"]'); if (!inp) return;
+    var u = inp.value.trim(); if (u && !/^https?:\/\//i.test(u)) u = 'https://' + u;
+    var k = id.split(':'), v = reel(+k[0], +k[1]); v.u = u.slice(0, 400); if (u && v.s === 0) v.s = 1;
+    reelOpen = null; A.set('reel:' + id, v); A.toast(u ? 'حُفظ رابط الريلز' : 'حُذف الرابط');
+  }
+}
+function paintReels(C) {
+  var b = $('#reelBoard'), top = $('#reelTop'); if (!b || !T.reels) return;
+  C = C || A.computed();
+  var cw = C.week, me = A.isMe(), made = reelCount(1), posted = reelCount(2), total = T.weeks * 2;
+  var nowW = Math.min(Math.max(cw, 1), T.weeks), th = T.reels[nowW - 1];
+  var nowMade = (reel(nowW, 0).s >= 1) + (reel(nowW, 1).s >= 1);
+  var prevW = nowW - 1, prevPosted = prevW >= 1 ? (reel(prevW, 0).s === 2) + (reel(prevW, 1).s === 2) : null;
+  top.innerHTML =
+    '<div class="rt-stat"><span class="rt-n en">' + made + '<small>/' + total + '</small></span><span class="rt-l">صُنع</span></div>' +
+    '<div class="rt-stat"><span class="rt-n en">' + posted + '<small>/' + total + '</small></span><span class="rt-l">نُشر</span></div>' +
+    '<div class="rt-now"><div class="rt-k">' + (cw < 1 ? 'أول تحدٍّ يبدأ مع الرحلة' : 'هذا الأسبوع · W' + nowW) + '</div>' +
+      '<div class="rt-h">«' + A.esc(th.t) + '» — جاهز <b class="en">' + nowMade + '</b> من 2 قبل نهاية الأسبوع</div>' +
+      (prevPosted !== null ? '<div class="rt-p">ونشر ريلزَي الأسبوع ' + prevW + ': <b class="en">' + prevPosted + '</b> من 2</div>' : '') +
+      '<div class="rt-rules">' + (T.reelRules || []).map(function (r) { return '<span>' + A.esc(r) + '</span>'; }).join('') + '</div></div>';
+  b.innerHTML = T.reels.map(function (R, x) {
+    var w = x + 1, state = cw < w ? 'future' : cw === w ? 'now' : 'past';
+    var pub = w < T.weeks ? 'يُنشران في الأسبوع ' + (w + 1) : 'يُنشران في أول أسبوع من يناير';
+    var rows = [R.a, R.b].map(function (idea, i) {
+      var v = reel(w, i), S = RS[v.s], id = w + ':' + i;
+      var late = state === 'past' && v.s === 0;
+      return '<div class="rr ' + S.c + (late ? ' late' : '') + '">' +
+        '<span class="rr-id en">' + (i ? 'B' : 'A') + '</span>' +
+        '<span class="rr-t">' + A.esc(idea) + (v.u ? ' <a class="rr-go" href="' + A.esc(v.u) + '" target="_blank" rel="noopener">شاهد ↗</a>' : '') + '</span>' +
+        '<button class="rr-s" data-rs="' + id + '"' + (me ? '' : ' disabled') + ' title="' + (me ? 'اضغط لتغيير الحالة' : '') + '"><b>' + S.k + '</b><i class="en">' + (late ? 'DELAYED' : S.en) + '</i></button>' +
+        (me ? '<button class="rr-l" data-rl="' + id + '" aria-label="رابط الريلز">🔗</button>' : '') +
+        (me && reelOpen === id ? '<div class="rr-in"><input type="url" dir="ltr" data-rin="' + id + '" placeholder="https://… رابط الريلز" value="' + A.esc(v.u || '') + '"><button class="btn btn-xs btn-main" data-rsave="' + id + '">حفظ</button></div>' : '') +
+        '</div>';
+    }).join('');
+    return '<article class="rw ' + state + '"><header><span class="rw-g en">W' + w + '</span><h3>' + A.esc(R.t) + '</h3>' +
+      (state === 'now' ? '<span class="rw-tag">الآن</span>' : '') + '</header>' + rows + '<footer>' + pub + '</footer></article>';
+  }).join('');
+}
+
 /* ---------------- boarding pass + gauge + wings ---------------- */
 function paintPass(C) {
   var w = curWeek(C), cur = C.chs[C.currentIdx].ch;
@@ -340,13 +404,14 @@ function paintPass(C) {
 
 /* ---------------- hooks ---------------- */
 T.hooks = {
-  init: function (api) { A = api; window.MUH_API = api; cockpit(); jet(); panelInit(); routeInit(); pfInit(); bbInit(); },
-  render: function (C) { paintPass(C); paintPanel(C); paintRoute(C); paintPf(C); paintBb(); },
+  init: function (api) { A = api; window.MUH_API = api; cockpit(); jet(); panelInit(); routeInit(); pfInit(); bbInit(); reelInit(); },
+  render: function (C) { paintPass(C); paintPanel(C); paintRoute(C); paintPf(C); paintBb(); paintReels(C); },
   managerExtra: function (C, api) {
     var w = curWeek(C), habits = T.checks.filter(function (c) { return api.get('c:' + w + ':' + c.id, false); }).length;
     return '<div class="mgr-extra">' +
       '<div class="mgr-box"><b>قائمة ما قبل الإقلاع</b>' + (+api.get('pf:' + w, 0) || 0) + ' هذا الأسبوع · ' + pfTotal() + ' منذ البداية</div>' +
       '<div class="mgr-box"><b>الصندوق الأسود</b>' + bbList().length + ' تسجيلًا (المحتوى خاص بمهند)</div>' +
+      '<div class="mgr-box"><b>تحدّي الريلز</b>صُنع ' + reelCount(1) + ' من ' + (T.weeks * 2) + ' · نُشر ' + reelCount(2) + '</div>' +
       '<div class="mgr-box"><b>تحدّي الكابتن</b>أفضل نتيجة: ' + (+api.get('gameBest', 0) || 0) + ' نقطة</div>' +
       '<div class="mgr-box"><b>عادات الأسبوع ' + w + '</b>' + habits + ' من ' + T.checks.length + '</div></div>';
   },

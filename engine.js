@@ -247,7 +247,7 @@ function renderChecks(C) {
 }
 
 /* ----- chapters ----- */
-var KIND = { lesson: 'درس', course: 'دورة', read: 'قراءة', watch: 'مشاهدة', practice: 'تمرين', project: 'مشروع', review: 'جلسة مع المشرف', mission: 'خطوة', milestone: 'محطة كبيرة', write: 'كتابة', ai: 'ذكاء اصطناعي' };
+var KIND = { lesson: 'درس', course: 'دورة', read: 'قراءة', watch: 'مشاهدة', practice: 'تمرين', project: 'مشروع', review: 'جلسة مع المشرف', mission: 'خطوة', milestone: 'محطة كبيرة', write: 'كتابة', ai: 'ذكاء اصطناعي', reel: 'تحدّي الريلز' };
 function renderChapters(C) {
   var el = $('#chapters'); if (!el) return;
   el.innerHTML = C.chs.map(function (x, i) {
