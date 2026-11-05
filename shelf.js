@@ -19,7 +19,7 @@ L.shelves.forEach(function (sh, si) {
   html += '<div class="shelf"><div class="shelf-label"><span>' + esc(sh.ar) + '</span><span>' + esc(sh.en) + '</span></div><div class="shelf-row">';
   if (si === 0) html += '<span class="bookend"></span>';
   books.forEach(function (b, i) {
-    html += '<a class="book' + (i % 3 === 1 ? ' tilt-r' : '') + (b.lean ? ' lean' : '') + '" data-bk="' + b.id + '" href="' + esc(url(b)) + '" target="_blank" rel="noopener"' +
+    html += '<a class="bk' + (i % 3 === 1 ? ' tilt-r' : '') + (b.lean ? ' lean' : '') + '" data-bk="' + b.id + '" href="' + esc(url(b)) + '" target="_blank" rel="noopener"' +
       ' style="--c:' + b.c + ';--h:' + b.h + 'px;--w:' + b.w + 'px' + (b.fg ? ';--fg:' + b.fg : '') + (b.fs ? ';--fs:' + b.fs + 'px' : '') + '"' +
       ' aria-label="' + esc(b.t + ' — ' + b.a) + '"><span class="pdf">PDF</span><span class="sp-ic">' + (sh.ic || '✦') + '</span>' +
       '<span class="sp-t">' + esc(b.t) + '</span><span class="sp-a">' + esc(b.pub) + '</span></a>';
@@ -34,7 +34,7 @@ hint();
 
 function show(id, mark) {
   var b = byId(id); if (!b) return;
-  el.querySelectorAll('.book.peek').forEach(function (x) { x.classList.remove('peek'); });
+  el.querySelectorAll('.bk.peek').forEach(function (x) { x.classList.remove('peek'); });
   if (mark) { var n = el.querySelector('[data-bk="' + id + '"]'); if (n) n.classList.add('peek'); }
   peek.innerHTML = '<div class="peek-card">' +
     '<div class="peek-cover" style="--c:' + b.c + ';--fg:' + (b.fg || '#fff') + '">' + esc(b.t) + '<small>' + esc(b.pub) + '</small></div>' +
