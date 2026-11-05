@@ -5,6 +5,8 @@
    ============================================================ */
 (function () {
 var AJP = 'https://institute.aljazeera.net/sites/default/files/';
+var Y = 'https://www.youtube.com/watch?v=';
+var YC = 'https://www.youtube.com/';
 var AJ = 'https://elearning.aljazeera.net/ar/courses/';
 
 window.TRACKER = {
@@ -32,10 +34,10 @@ window.TRACKER = {
       tasks: [
         { id: 'a1', k: 'mission', w: 1, t: 'خطة الرحلة: أكتب 3 أهداف لهذين الشهرين ولماذا يهمّني كل واحد — وأضيف موادّي ومواعيد امتحاناتي في قسم «الدراسة»', sub: 1 },
         { id: 'a2', k: 'read', w: 1, lang: 'AR', t: 'لماذا تعجز صور الذكاء الاصطناعي عن منافسة عدسة الحقيقة؟ — الجزيرة نت', url: 'https://www.aljazeera.net/media/2025/11/4/%d9%84%d9%85%d8%a7%d8%b0%d8%a7-%d9%84%d8%a7-%d9%8a%d9%85%d9%83%d9%86-%d8%a3%d9%86-%d8%aa%d8%ad%d9%84-%d8%b5%d9%88%d8%b1-%d8%a7%d9%84%d8%b0%d9%83%d8%a7%d8%a1', why: 'لماذا يبقى الإنسان خلف الكاميرا أقوى من أي آلة.' },
-        { id: 'a3', k: 'course', w: 1, lang: 'EN', t: 'Ken Burns Teaches Documentary Filmmaking · الدروس 1 – 7', why: 'أعظم صانع وثائقيات يشرح كيف تحمل الصورة عاطفة القصة — من مكتبة دورات المركز.' },
+        { id: 'a3', k: 'course', w: 1, lang: 'EN', t: 'Ken Burns: On Story — فيلم قصير (5 دقائق) عن معنى القصة', url: 'https://www.youtube.com/watch?v=VlZYgPllKNU', why: 'أعظم صانع وثائقيات يشرح في 5 دقائق لماذا نحكي القصص — شاهده مرتين: مرة للفكرة، ومرة لترى كيف بُني الفيلم نفسه.' },
         { id: 'a4', k: 'course', w: 2, lang: 'AR', t: 'السرد في الصحافة.. كيف تحكي قصّة متأنية؟ — معهد الجزيرة للإعلام', url: AJ + 'course-3026', why: 'البداية، والتشويق، والنهاية — وأخلاقيات الاستمالة العاطفية.' },
         { id: 'a5', k: 'watch', w: 2, lang: 'EN', t: 'Every Frame a Painting · The Imposter — Looking into the Lens', url: 'https://www.youtube.com/@everyframeapainting/videos', why: 'كيف تصنع النظرة إلى العدسة تعاطفًا مباشرًا مع المشاهد.' },
-        { id: 'a8', k: 'course', w: 2, lang: 'EN', t: 'Magnum Learn · Get Started in Photography — أقسام «الرؤية» و«القصة»', url: 'https://magnumphotos.com/learn', why: 'مصوّرو Magnum يشرحون كيف تتحوّل الصورة من لقطة جميلة إلى قصة.' },
+        { id: 'a8', k: 'course', w: 2, lang: 'AR', t: 'أساسيات التصوير مع فادي حبشي: التكوين، ثم إعدادات الكاميرا، ثم الإضاءة (3 حلقات قصيرة)', url: 'https://www.youtube.com/watch?v=VpTmxijreiY', why: 'سلسلة عربية واضحة — ابدأ بالحلقة الأولى (التكوين) وأكمل الحلقتين التاليتين من القناة نفسها.' },
         { id: 'a6', k: 'practice', w: 2, sub: 1, t: '«قصة في 5 صور»: 5 صور لشخص واحد في ممكن — بلا كلام ولا نص، العاطفة من الصورة وحدها' },
         { id: 'a7', k: 'review', w: 2, t: 'جلسة مع المشرف: هل وصل الشعور؟ ولماذا؟' }
       ] },
@@ -46,7 +48,7 @@ window.TRACKER = {
       tasks: [
         { id: 'b1', k: 'course', w: 3, lang: 'AR', t: 'وراء كل لاجئ قصة.. السرد الصحفي للقضايا الإنسانية — معهد الجزيرة للإعلام', url: AJ + 'course-69', why: 'كيف تُظهر الإنسان بلا صور نمطية، وتجد قصته الحقيقية.' },
         { id: 'b2', k: 'read', w: 3, lang: 'AR', t: 'مسؤوليتنا تجاه الناس الذين نلتقط صورهم — أطباء بلا حدود', url: 'https://www.msf.org/ar/%D8%A7%D9%84%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-%D8%B9%D9%86-%D8%A3%D9%86%D8%B4%D8%B7%D8%A9-%D8%A3%D8%B7%D8%A8%D8%A7%D8%A1-%D8%A8%D9%84%D8%A7-%D8%AD%D8%AF%D9%88%D8%AF-%D9%84%D8%B9%D8%A7%D9%85-2022/%D9%85%D8%B3%D8%A4%D9%88%D9%84%D9%8A%D8%AA%D9%86%D8%A7-%D8%AA%D8%AC%D8%A7%D9%87-%D8%A7%D9%84%D9%86%D8%A7%D8%B3-%D8%A7%D9%84%D8%B0%D9%8A%D9%86-%D9%86%D9%84%D8%AA%D9%82%D8%B7-%D8%B5%D9%88%D8%B1%D9%87%D9%85', why: 'نموذج مباشر لمؤسسة إنسانية تراجع صورها من أجل كرامة الناس.' },
-        { id: 'b3', k: 'course', w: 3, lang: 'EN', t: 'Ken Burns · الدروس 8 – 14 (المقابلة، والشخصية، والأرشيف)', why: 'من مكتبة دورات المركز الإعلامي.' },
+        { id: 'b3', k: 'course', w: 3, lang: 'EN', t: 'Every Interview Style Explained — كيف تُجرى المقابلة في الفيلم الوثائقي (10 دقائق)', url: 'https://www.youtube.com/watch?v=4E5DkR87SwI', why: 'قبل أن تصوّر إنسانًا وتسمعه: أنواع المقابلة، ومكان الكاميرا، وكيف تجعله يرتاح ويحكي.' },
         { id: 'b4', k: 'read', w: 4, lang: 'AR', t: 'إرشادات أخلاقية لاستخدام الفيديو في المناصرة — WITNESS (النسخة العربية)', url: 'https://www.witness.org/portfolio_page/ethical-guidelines-for-using-videos-in-human-rights-reporting-and-advocacy/', why: 'الموافقة، والأمان، وتقليل الضرر — أساس كل عمل في منظمة مجتمع مدني.' },
         { id: 'b5', k: 'practice', w: 4, sub: 1, t: '«البورتريه والجملة»: حوار 10 دقائق مع متطوّع أو مستفيد (بموافقته) ثم بورتريه له — ومعه الجملة الواحدة منه التي تحمل قصته' },
         { id: 'b6', k: 'write', w: 4, t: 'أول تسجيل في «الصندوق الأسود»: موقف أخطأت فيه — ماذا حدث، ماذا تعلّمت، ماذا سأفعل في المرة القادمة' },
@@ -59,7 +61,7 @@ window.TRACKER = {
       tasks: [
         { id: 'c1', k: 'read', w: 5, lang: 'AR', t: 'أنواع اللقطات وزوايا الكاميرا ومعانيها النفسية — Adobe (عربي)', url: 'https://www.adobe.com/ae_ar/creativecloud/video/production/cinematography/camera-shots-and-angles.html', why: 'الزاوية المنخفضة قوة، ومستوى العين احترام، واللقطة القريبة حميمية.' },
         { id: 'c2', k: 'read', w: 5, lang: 'EN', t: 'StudioBinder · The Ultimate Guide to Camera Shots', url: 'https://studiobinder.com/blog/types-of-camera-shots/' },
-        { id: 'c3', k: 'course', w: 5, lang: 'EN', t: 'Annie Leibovitz Teaches Photography · الدروس 2، 4، 6، 8 (البورتريه، والضوء، والعمل مع الشخص، وتصوير المقرّبين منك)', why: 'من مكتبة المركز: كيف يقول البورتريه من هو الإنسان، لا كيف يبدو فقط.' },
+        { id: 'c3', k: 'course', w: 5, lang: 'AR', t: 'الإضاءة في التصوير — فادي حبشي (الحلقة 3) + «فن الإضاءة» مع محمد إحسان', url: 'https://www.youtube.com/watch?v=sb4CFaPoexQ', why: 'كيف يغيّر الضوء معنى الصورة والبورتريه — بالعربية، مع أمثلة عملية.' },
         { id: 'c4', k: 'practice', w: 5, sub: 1, t: '«زاوية واحدة، ثلاثة معانٍ»: الشخص نفسه من الأسفل، وعلى مستوى العين، ومن الأعلى + لقطة واسعة وأخرى قريبة — وأكتب ما تقوله كل صورة' },
         { id: 'c5', k: 'read', w: 6, lang: 'AR', t: 'البرنامج العربي للتصوير الوثائقي — أدرس 3 مقالات مصوّرة: لماذا اختار المصوّر هذا الترتيب؟', url: 'https://www.arabdocphotography.org/project/86', why: 'قصص مصوّرة عربية شخصية وعاطفية تشبه قصص مجتمعنا.' },
         { id: 'c6', k: 'practice', w: 6, sub: 1, t: '«الضوء يحكي»: 6 صور لمكان واحد في ممكن في 3 أوقات مختلفة من اليوم — ما الشعور الذي يصنعه كل ضوء؟' },
@@ -71,9 +73,9 @@ window.TRACKER = {
       desc: 'كل ما تعلّمته يجتمع في قصة واحدة: إنسان حقيقي، رحلة شعورية لها بداية ووسط ونهاية، وصور بزوايا مختارة بنيّة.',
       tasks: [
         { id: 'd1', k: 'course', w: 7, lang: 'EN', t: 'Vertical Storytelling — Al Jazeera Media Institute', url: 'https://elearning.aljazeera.net/en/courses/vertical-storytelling', why: 'بُنى القصة العمودية، والحبكة والنهاية، وقياس الأثر.' },
-        { id: 'd2', k: 'course', w: 7, lang: 'EN', t: 'Jimmy Chin Teaches Adventure Photography · الدرسان 4 و5 (مبادئ السرد: الفكرة، والبحث، والتصوير، والمونتاج)', why: 'من مكتبة المركز: كيف تبني قصة مصوّرة كاملة قبل أن تضغط الزر.' },
+        { id: 'd2', k: 'course', w: 7, lang: 'EN', t: 'The ONLY 9 Shots You Need To Tell Any Story — Tim Runia (13 دقيقة)', url: 'https://www.youtube.com/watch?v=xpS3jKLN3RI', why: 'تسع لقطات تبني أي قصة مصوّرة — ستستخدمها مباشرة في قصة الأثر.' },
         { id: 'd3', k: 'review', w: 7, t: 'جلسة مع الفريق: الذكاء الاصطناعي في عملنا — نتناقش معًا فيما نستخدمه وما لا نستخدمه' },
-        { id: 'd5', k: 'course', w: 7, lang: 'EN', t: 'Ken Burns · الدروس 15 – 26 (البناء، والمونتاج، والموسيقى)', why: 'من مكتبة دورات المركز الإعلامي.' },
+        { id: 'd5', k: 'course', w: 7, lang: 'EN', t: 'How Documentary Editors Create Emotional Films — Mark Johansson (13 دقيقة)', url: 'https://www.youtube.com/watch?v=Y7JJvRSs1Ug', why: 'البناء والإيقاع والموسيقى في المونتاج الوثائقي — كيف تصل العاطفة إلى المشاهد.' },
         { id: 'd6', k: 'project', w: 8, sub: 1, t: 'قصة الأثر: مقال مصوّر من 8 – 10 صور عن إنسان حقيقي برحلة شعورية وتعليقات قصيرة، ونسخة عمودية قصيرة للمنصّات' },
         { id: 'd7', k: 'milestone', w: 8, t: 'الهبوط: عرض «قصة الأثر» أمام فريق المركز الإعلامي' },
         { id: 'd8', k: 'write', w: 8, sub: 1, t: 'رسالة ثانية إلى «المبدع الصغير» — ماذا تغيّر في نظرتك إلى الكاميرا منذ رسالتك الأولى؟' },
@@ -99,33 +101,53 @@ window.TRACKER = {
     'بعد التصوير: نسخة احتياطية وتسمية الملفات'
   ],
 
+  library: {
+    folderName: 'Muhannad Library',
+    folder: 'https://moomken-my.sharepoint.com/personal/a_abukhutwah_moomken_org/_layouts/15/onedrive.aspx?parent=%2Fpersonal%2Fa_abukhutwah_moomken_org%2FDocuments%2FMuhannad%20Library&id=%2Fpersonal%2Fa_abukhutwah_moomken_org%2FDocuments%2FMuhannad%20Library%2F',
+    folderLink: 'https://moomken-my.sharepoint.com/personal/a_abukhutwah_moomken_org/Documents/Muhannad%20Library',
+    shelves: [
+      { id: 'core', ar: 'الرفّ الأول · القصة والصورة', en: 'Story & image', ic: '✦', deco: ['🪴'] },
+      { id: 'more', ar: 'الرفّ الثاني · للتعمّق', en: 'Go deeper', ic: '❖', deco: ['🎙️','☕'] }
+    ],
+    books: [
+    { id: 'doc', s: 'core', t: 'التصوير الوثائقي في العالم العربي', pub: 'معهد الجزيرة', a: 'تجارب مصوّرين عرب ومشاريعهم الوثائقية — زمالة الجزيرة 2025', d: 'كيف يبني المصوّر العربي قصة وثائقية من فكرة إلى مشروع — الأقرب إلى عملك.', c: '#2F5D50', h: 236, w: 56, ch: 'الفصل 1', src: 'من إصدارات معهد الجزيرة للإعلام', file: '01-التصوير-الوثائقي-في-العالم-العربي.pdf' },
+    { id: 'human', s: 'core', t: 'دليل إلى القصة الصحفية الإنسانية', pub: 'معهد الجزيرة', a: 'معهد الجزيرة للإعلام · 2025', d: 'كيف تجد الإنسان داخل الخبر، وتحكي قصته بكرامة وتعاطف.', c: '#7A2E3A', h: 226, w: 54, ch: 'الفصل 2', src: 'من إصدارات معهد الجزيرة للإعلام', file: '02-دليل-إلى-القصة-الصحفية-الإنسانية.pdf' },
+    { id: 'sard', s: 'core', t: 'السرد في الصحافة', pub: 'معهد الجزيرة', a: 'معهد الجزيرة للإعلام · 2021', d: 'المشهد والشخصية والتفاصيل التي تجعل القصة تُكمَل حتى النهاية.', c: '#E0B23A', h: 214, w: 52, fg: '#1F2635', ch: 'الفصل 2', src: 'من إصدارات معهد الجزيرة للإعلام', file: '03-السرد-في-الصحافة.pdf' },
+    { id: 'tv', s: 'core', t: 'كيف تحكي القصة في التلفزيون', pub: 'معهد الجزيرة', a: 'معهد الجزيرة للإعلام · 2022', d: 'الصورة أولًا ثم الكلمة: بناء القصة المصوّرة والسكربت والمونتاج.', c: '#2E5BFF', h: 222, w: 52, ch: 'الفصل 4', src: 'من إصدارات معهد الجزيرة للإعلام', file: '04-كيف-تحكي-القصة-في-التلفزيون.pdf' },
+    { id: 'mojo', s: 'core', t: 'دليل صحافة الموبايل 2.0', pub: 'معهد الجزيرة', a: 'معهد الجزيرة للإعلام · 2022', d: 'القصة كاملة من الهاتف: تصوير وصوت ومونتاج ونشر.', c: '#6B7A3A', h: 204, w: 48, ch: 'الفصل 4', src: 'من إصدارات معهد الجزيرة للإعلام', file: '05-دليل-صحافة-الموبايل-2.0.pdf' },
+    { id: 'tools', s: 'more', t: 'أدوات كتابة القصة', pub: 'معهد الجزيرة', a: 'معهد الجزيرة للإعلام · 2024', d: 'صندوق أدوات السرد: البداية والشخصية والإيقاع — لتعليقات صورك ونصوصك.', c: '#B4552F', h: 198, w: 46, ch: 'الفصل 1', src: 'من إصدارات معهد الجزيرة للإعلام', file: '06-أدوات-كتابة-القصة.pdf' },
+    { id: 'inter', s: 'more', t: 'المقابلات الإعلامية', pub: 'معهد الجزيرة', a: 'إستراتيجية السؤال وإدارة التفاعل · 2026', d: 'كيف تسأل الناس فيحكون لك قصتهم الحقيقية.', c: '#3E4A5C', h: 218, w: 50, ch: 'الفصل 2', src: 'من إصدارات معهد الجزيرة للإعلام', file: '07-المقابلات-الإعلامية.pdf' },
+    { id: 'film', s: 'more', t: 'الفيلم الوثائقي: مقدمة قصيرة جدًّا', pub: 'هنداوي', a: 'باتريشيا أوفدرهايدي · مؤسسة هنداوي', d: 'ما الذي يجعل العمل «وثائقيًا»؟ وكيف يحكي الحقيقة دون أن يكذب؟', c: '#1F3A5F', h: 230, w: 54, ch: 'الفصل 4', src: 'من إصدارات مؤسسة هنداوي', file: '08-الفيلم-الوثائقي-مقدمة-قصيرة-جدا.pdf' },
+    { id: 'vis', s: 'more', t: 'الثقافة البصرية: مقدمة قصيرة جدًّا', pub: 'هنداوي', a: 'ألكسيس بويلان · مؤسسة هنداوي', d: 'كيف نرى الصور، ولماذا تؤثّر فينا بهذه القوة.', c: '#EADBC0', h: 208, w: 48, fg: '#1F2635', ch: 'الفصل 3', src: 'من إصدارات مؤسسة هنداوي', file: '09-الثقافة-البصرية-مقدمة-قصيرة-جدا.pdf' }
+    ]
+  },
   resources: [
-    { h: '🎓 الدورات الأساسية', items: [
-      { t: 'Ken Burns · Annie Leibovitz · Jimmy Chin', by: 'مكتبة دورات المركز الإعلامي', lang: 'EN', kind: 'مكتبة المركز', d: 'الدروس كاملة متاحة لك في مكتبة المركز — اطلبها من المشرف.' },
+    { h: '🎓 دورات عربية — معهد الجزيرة للإعلام', items: [
       { t: 'من الفكرة إلى النشر.. كيف تصنع قصتك الرقمية؟', by: 'معهد الجزيرة · AJ+', lang: 'AR', url: AJ + 'course-183' },
       { t: 'الوسائط المتعددة.. أدواتك لتشكيل سرد قصصي جذاب', by: 'معهد الجزيرة للإعلام', lang: 'AR', url: AJ + 'course-58' },
       { t: 'وثائقي الهاتف المحمول', by: 'معهد الجزيرة للإعلام', lang: 'AR', url: AJ + 'course-61' },
       { t: 'لكل منصة خصوصيتها', by: 'معهد الجزيرة للإعلام', lang: 'AR', url: AJ + 'course-3908' }
     ] },
-    { h: '▶ قنوات تشاهدها بعين المحلّل', items: [
-      { t: 'Every Frame a Painting', by: 'YouTube', lang: 'EN', url: 'https://www.youtube.com/@everyframeapainting/videos', kind: 'قناة' },
-      { t: 'Lessons from the Screenplay', by: 'YouTube', lang: 'EN', url: 'https://www.youtube.com/channel/UCErSSa3CaP_GJxmFpdjG9Jw', kind: 'قناة', d: 'بناء القصة والشخصية.' },
-      { t: 'StudioBinder', by: 'YouTube', lang: 'EN', url: 'https://www.youtube.com/channel/UCUFoQUaVRt3MVFxqwPUMLCQ', kind: 'قناة', d: 'اللقطات والزوايا والتكوين.' }
+    { h: '▶ قنوات عربية للتصوير والمونتاج', items: [
+      { t: 'فادي حبشي — أساسيات التصوير', by: 'YouTube', lang: 'AR', url: YC + '@FadyHabashy', kind: 'قناة', d: 'التكوين، والإعدادات، والإضاءة — بلغة بسيطة.' },
+      { t: 'محمد إحسان — التصوير وصناعة المحتوى', by: 'YouTube', lang: 'AR', url: YC + '@mohammed-Ihsan', kind: 'قناة', d: 'الإضاءة، والتكوين، والتصوير للمحتوى.' },
+      { t: 'سكة تك — أحجام اللقطات وزوايا التصوير', by: 'YouTube', lang: 'AR', url: Y + 'CD1eFkk_59A', kind: 'فيديو' },
+      { t: 'DaVinci Resolve كاملًا بالعربي — عمرو عطا الله', by: 'YouTube · ساعة و47 دقيقة', lang: 'AR', url: Y + '8iGvUZKeLeU', kind: 'دورة' }
+    ] },
+    { h: '▶ قنوات بالإنجليزية تشاهدها بعين المحلّل', items: [
+      { t: 'Sean Tucker — التصوير والمعنى', by: 'YouTube', lang: 'EN', url: YC + '@seantuck', kind: 'قناة', d: 'ملهِم: لماذا نصوّر، وكيف نرى.' },
+      { t: 'The Art of Photography — Ted Forbes', by: 'YouTube', lang: 'EN', url: YC + '@theartofphotography', kind: 'قناة', d: 'التكوين وقراءة أعمال كبار المصوّرين.' },
+      { t: 'Every Frame a Painting', by: 'YouTube', lang: 'EN', url: YC + '@everyframeapainting', kind: 'قناة', d: 'لغة اللقطة والمونتاج في السينما.' },
+      { t: 'Casey Faris — DaVinci Resolve', by: 'YouTube', lang: 'EN', url: Y + 'MCDVcQIA3UM', kind: 'دورة', d: 'دورة كاملة في المونتاج.' }
+    ] },
+    { h: '✨ للإلهام', items: [
+      { t: 'Platon: حكايات تصوير شخصيات مؤثّرة', by: 'TED · 18 دقيقة', lang: 'EN', url: Y + 'rE_SxmltgmA', kind: 'محاضرة' },
+      { t: 'صورة هزّت ضميره.. كيف غيّرت فلسطين حياة مصوّر ياباني؟', by: 'الجزيرة الوثائقية', lang: 'AR', url: Y + 'sJU5XUIXn-w', kind: 'وثائقي' },
+      { t: 'الجزيرة الوثائقية', by: 'YouTube', lang: 'AR', url: YC + '@aljazeeradocumentary', kind: 'قناة', d: 'شاهد كيف تُبنى القصة الوثائقية العربية.' }
     ] },
     { h: '🎙 مكمّل لاحقًا: التعليق الصوتي', items: [
       { t: 'فن الأداء الصوتي', by: 'معهد الجزيرة للإعلام', lang: 'AR', url: AJ + 'course-63', d: 'بعد أن تتقن الصورة: كيف يتحوّل النص إلى قصة حيّة.' },
-      { t: 'فن التعليق الصوتي للفيلم الوثائقي', by: 'مجلة معهد الجزيرة', lang: 'AR', url: 'https://institute.aljazeera.net/en/node/449' },
-      { t: 'Narration: Writing for the Ear', by: 'Transom', lang: 'EN', url: 'https://hearingvoices.com/tow/narration-writing-for-the-ear' }
-    ] },
-    { h: '📖 كتب يمكنك تحميلها وقراءتها الآن', items: [
-      { t: 'التصوير الوثائقي في العالم العربي', by: 'معهد الجزيرة للإعلام · 2025', lang: 'AR', kind: 'PDF', url: AJP + '2025/%D8%A7%D9%84%D8%AA%D8%B5%D9%88%D9%8A%D8%B1%20%D8%A7%D9%84%D9%88%D8%AB%D8%A7%D8%A6%D9%82%D9%8A%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%20%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A_%D8%B2%D9%85%D8%A7%D9%84%D8%A9%20%D8%A7%D9%84%D8%AC%D8%B2%D9%8A%D8%B1%D8%A9_%20%D8%AE%D8%A7%D9%84%D8%AF%20%D8%A2%D9%8A%D8%AA%20%D9%86%D8%A7%D8%B5%D8%B1.pdf', d: 'تجارب مصوّرين عرب ومشاريعهم الوثائقية — الأقرب إلى عملك.' },
-      { t: 'دليل إلى القصة الصحفية الإنسانية', by: 'معهد الجزيرة للإعلام · 2025', lang: 'AR', kind: 'PDF', url: AJP + '2025/%D8%AF%D9%84%D9%8A%D9%84%20%D8%A5%D9%84%D9%89%20%D8%A7%D9%84%D9%82%D8%B5%D9%91%D8%A9%20%D8%A7%D9%84%D8%B5%D8%AD%D9%81%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A5%D9%86%D8%B3%D8%A7%D9%86%D9%8A%D9%91%D8%A9%20-%20Final%20-%20web.pdf', d: 'كيف تجد الإنسان داخل الخبر، وتحكي قصته بكرامة.' },
-      { t: 'السرد في الصحافة', by: 'معهد الجزيرة للإعلام · 2021', lang: 'AR', kind: 'PDF', url: AJP + '2021/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A7%D9%84%D8%B3%D8%B1%D8%AF%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B5%D8%AD%D8%A7%D9%81%D8%A9.pdf', d: 'المشهد والشخصية والتفاصيل التي تجعل القصة تُكمَل حتى النهاية.' },
-      { t: 'كيف تحكي القصة للتلفزيون', by: 'معهد الجزيرة للإعلام · 2022', lang: 'AR', kind: 'PDF', url: AJP + '2022/%D9%83%D9%8A%D9%81%20%D8%AA%D8%AD%D9%83%D9%8A%20%D8%A7%D9%84%D9%82%D8%B5%D8%A9%20%D9%84%D9%84%D8%AA%D9%84%D9%81%D8%B2%D9%8A%D9%88%D9%86.pdf', d: 'الصورة أولًا، ثم الكلمة: بناء القصة المصوّرة.' },
-      { t: 'صحافة الموبايل 2.0', by: 'معهد الجزيرة للإعلام · 2022', lang: 'AR', kind: 'PDF', url: AJP + '2022/Mobile%20Journalism%20Ar%20-%20Web%20%281%29_0.pdf', d: 'صناعة القصة كاملة من الهاتف: تصوير وصوت ومونتاج ونشر.' },
-      { t: 'المقابلات الإعلامية.. إستراتيجية السؤال وإدارة التفاعل', by: 'معهد الجزيرة للإعلام · 2026', lang: 'AR', kind: 'PDF', url: AJP + '2026/%D9%83%D8%AA%D8%A7%D8%A8%20%D8%A5%D8%B3%D8%AA%D8%B1%D8%A7%D8%AA%D9%8A%D8%AC%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A6%D9%84%D8%A9%20%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%82%D8%A7%D8%A8%D9%84%D8%A7%D8%AA.pdf', d: 'كيف تسأل الناس فيحكون لك قصتهم الحقيقية.' },
-      { t: 'الفيلم الوثائقي: مقدمة قصيرة جدًّا — باتريشيا أوفدرهايدي', by: 'مؤسسة هنداوي · كتاب مترجم', lang: 'AR', kind: 'كتاب', url: 'https://www.hindawi.org/books/37969426/', d: 'ما الذي يجعل العمل «وثائقيًا»؟ وكيف يحكي الحقيقة دون أن يكذب؟' },
-      { t: 'الثقافة البصرية: مقدمة قصيرة جدًّا — ألكسيس بويلان', by: 'مؤسسة هنداوي · كتاب مترجم', lang: 'AR', kind: 'كتاب', url: 'https://www.hindawi.org/books/40597508/', d: 'كيف نرى الصور، ولماذا تؤثّر فينا بهذه القوة.' }
+      { t: 'فن التعليق الصوتي للفيلم الوثائقي', by: 'مجلة معهد الجزيرة', lang: 'AR', url: 'https://institute.aljazeera.net/en/node/449' }
     ] }
   ]
 };

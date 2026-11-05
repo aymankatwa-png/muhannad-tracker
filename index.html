@@ -7,8 +7,8 @@
 <title>سجلّ الطيران — مهند · وحدة التصوير · المركز الإعلامي — ممكن</title>
 <meta name="description" content="سجلّ الطيران: مسار مهند في التصوير والسرد القصصي وصناعة المحتوى الإنساني — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
 <link rel="icon" href="assets/favicon.png">
-<link rel="stylesheet" href="base.css?v=4">
-<link rel="stylesheet" href="app.css?v=4">
+<link rel="stylesheet" href="base.css?v=5">
+<link rel="stylesheet" href="app.css?v=5">
 </head>
 <body>
 
@@ -219,9 +219,17 @@
 
 
 <!-- ============ resources ============ -->
+<section class="sec" id="shelfSec">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">Flight library</div><h2>مكتبة القمرة: رفّ الكتب</h2><p class="sec-sub">مرّر المؤشّر على أي كتاب ليخرج من الرفّ — واضغط عليه ليُفتح ملفّ الـ PDF مباشرةً. كلّ الكتب من إصدارات معهد الجزيرة للإعلام، وكتب مؤسسة هنداوي المترجمة.</p></div></div>
+    <p class="lib-folder rv"><a class="btn btn-ghost btn-sm" id="libFolder" href="#" target="_blank" rel="noopener">📁 مجلّد الكتب كاملًا على OneDrive</a></p>
+    <div class="bookcase rv" id="bookcase"></div>
+    <div class="peek-wrap"><div id="bookPeek" aria-live="polite"></div></div>
+  </div>
+</section>
 <section class="sec" id="library">
   <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">Flight library</div><h2>مكتبة القمرة</h2><p class="sec-sub">مصادر إضافية بعد المسار — للأيام التي تريد فيها أن تطير أبعد.</p></div></div>
+    <div class="sec-head rv"><div><div class="sec-k">Free channels</div><h2>شاهد وتعلّم</h2><p class="sec-sub">قنوات وفيديوهات بالعربية والإنجليزية: للإلهام، وللتصوير، وللمونتاج.</p></div></div>
     <div id="resources" class="rv"></div>
   </div>
 </section>
@@ -257,9 +265,10 @@
 <div id="toasts" aria-live="polite"></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 
-<script src="content.js?v=4"></script>
-<script src="theme.js?v=4"></script>
-<script src="engine.js?v=4"></script>
-<script src="game.js?v=4"></script>
+<script src="content.js?v=5"></script>
+<script src="theme.js?v=5"></script>
+<script src="shelf.js?v=2"></script>
+<script src="engine.js?v=5"></script>
+<script src="game.js?v=5"></script>
 </body>
 </html>
