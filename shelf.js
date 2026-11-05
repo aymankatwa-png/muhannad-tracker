@@ -1,7 +1,7 @@
 /* ============================================================
    رفّ الكتب — an interactive bookcase (shared by both trackers)
    reads window.TRACKER.library = { folder, folderName, shelves[], books[] }
-   every book opens its PDF directly (OneDrive copy or official free PDF)
+   every book opens its PDF directly (official publisher link — no sign-in needed)
    ============================================================ */
 (function () {
 'use strict';
@@ -39,7 +39,7 @@ function show(id, mark) {
   peek.innerHTML = '<div class="peek-card">' +
     '<div class="peek-cover" style="--c:' + b.c + ';--fg:' + (b.fg || '#fff') + '">' + esc(b.t) + '<small>' + esc(b.pub) + '</small></div>' +
     '<div><h4>' + esc(b.t) + '</h4><div class="pa">' + ltr(b.a) + '</div><p>' + ltr(b.d) + '</p>' +
-    '<div class="pk"><a class="btn btn-main btn-sm" href="' + esc(url(b)) + '" target="_blank" rel="noopener">📖 اقرأ الآن (PDF)</a>' +
+    '<div class="pk"><a class="btn btn-main btn-sm" href="' + esc(url(b)) + '" target="_blank" rel="noopener">📖 اقرأ الآن</a>' +
     (b.ch ? '<span class="pk-tag">رفيق ' + esc(b.ch) + '</span>' : '') + '<span class="pk-tag">' + esc(b.src) + '</span></div></div></div>';
 }
 el.querySelectorAll('[data-bk]').forEach(function (n) {
