@@ -35,7 +35,8 @@ window.TRACKER = {
         { id: 'a3', k: 'course', w: 1, paid: 1, lang: 'EN', t: 'Ken Burns Teaches Documentary Filmmaking · الدروس 1 – 7', url: MC, why: 'أعظم صانع وثائقيات يشرح كيف تحمل الصورة والصوت عاطفة القصة.' },
         { id: 'a4', k: 'course', w: 2, lang: 'AR', t: 'السرد في الصحافة.. كيف تحكي قصّة متأنية؟ — معهد الجزيرة للإعلام', url: AJ + 'course-3026', why: 'البداية، والتشويق، والنهاية — وأخلاقيات الاستمالة العاطفية.' },
         { id: 'a5', k: 'watch', w: 2, lang: 'EN', t: 'Every Frame a Painting · The Imposter — Looking into the Lens', url: 'https://www.youtube.com/@everyframeapainting/videos', why: 'كيف تصنع النظرة إلى العدسة تعاطفًا مباشرًا مع المشاهد.' },
-        { id: 'a6', k: 'practice', w: 2, sub: 1, t: '«دقيقة بلا كلام»: قصة عمودية مدتها 60 ثانية عن شخص واحد في ممكن — بلا تعليق صوتي، العاطفة من الصورة وحدها' },
+        { id: 'a8', k: 'course', w: 2, lang: 'EN', t: 'Magnum Learn · Get Started in Photography — أقسام «الرؤية» و«القصة»', url: 'https://magnumphotos.com/learn', why: 'مصوّرو Magnum يشرحون كيف تتحوّل الصورة من لقطة جميلة إلى قصة.' },
+        { id: 'a6', k: 'practice', w: 2, sub: 1, t: '«قصة في 5 صور»: 5 صور لشخص واحد في ممكن — بلا كلام ولا نص، العاطفة من الصورة وحدها' },
         { id: 'a7', k: 'review', w: 2, t: 'جلسة مع المشرف: هل وصل الشعور؟ ولماذا؟' }
       ] },
 
@@ -47,33 +48,33 @@ window.TRACKER = {
         { id: 'b2', k: 'read', w: 3, lang: 'AR', t: 'مسؤوليتنا تجاه الناس الذين نلتقط صورهم — أطباء بلا حدود', url: 'https://www.msf.org/ar/%D8%A7%D9%84%D8%AA%D9%82%D8%B1%D9%8A%D8%B1-%D8%A7%D9%84%D8%AF%D9%88%D9%84%D9%8A-%D8%B9%D9%86-%D8%A3%D9%86%D8%B4%D8%B7%D8%A9-%D8%A3%D8%B7%D8%A8%D8%A7%D8%A1-%D8%A8%D9%84%D8%A7-%D8%AD%D8%AF%D9%88%D8%AF-%D9%84%D8%B9%D8%A7%D9%85-2022/%D9%85%D8%B3%D8%A4%D9%88%D9%84%D9%8A%D8%AA%D9%86%D8%A7-%D8%AA%D8%AC%D8%A7%D9%87-%D8%A7%D9%84%D9%86%D8%A7%D8%B3-%D8%A7%D9%84%D8%B0%D9%8A%D9%86-%D9%86%D9%84%D8%AA%D9%82%D8%B7-%D8%B5%D9%88%D8%B1%D9%87%D9%85', why: 'نموذج مباشر لمؤسسة إنسانية تراجع صورها من أجل كرامة الناس.' },
         { id: 'b3', k: 'course', w: 3, paid: 1, lang: 'EN', t: 'Ken Burns · الدروس 8 – 14 (المقابلة، والشخصية، والأرشيف)', url: MC },
         { id: 'b4', k: 'read', w: 4, lang: 'AR', t: 'إرشادات أخلاقية لاستخدام الفيديو في المناصرة — WITNESS (النسخة العربية)', url: 'https://www.witness.org/portfolio_page/ethical-guidelines-for-using-videos-in-human-rights-reporting-and-advocacy/', why: 'الموافقة، والأمان، وتقليل الضرر — أساس كل عمل في منظمة مجتمع مدني.' },
-        { id: 'b5', k: 'practice', w: 4, sub: 1, t: '«الجملة الواحدة»: مقابلة حقيقية لمدة 10 دقائق مع متطوّع أو مستفيد (بموافقته) — أكتب الجملة التي تحمل شعوره، ولماذا اخترتها' },
+        { id: 'b5', k: 'practice', w: 4, sub: 1, t: '«البورتريه والجملة»: حوار 10 دقائق مع متطوّع أو مستفيد (بموافقته) ثم بورتريه له — ومعه الجملة الواحدة منه التي تحمل قصته' },
         { id: 'b6', k: 'write', w: 4, t: 'أول تسجيل في «الصندوق الأسود»: موقف أخطأت فيه — ماذا حدث، ماذا تعلّمت، ماذا سأفعل في المرة القادمة' },
-        { id: 'b7', k: 'review', w: 4, t: 'جلسة مع المشرف على المقابلة والجملة' }
+        { id: 'b7', k: 'review', w: 4, t: 'جلسة مع المشرف على البورتريه والجملة' }
       ] },
 
-    { id: 'L3', n: 3, badge: '3', name: 'الصوت: تعليقٌ يحمل الشعور', en: 'Leg 3 · Voice', weeks: [5, 6], color: '#FF8A5B',
-      quote: 'التعليق الجيد لا يصف الصورة… بل يقول ما لا تستطيع الصورة قوله.',
-      desc: 'أنت وجه أمام الكاميرا وصوت خلفها. هنا تتعلّم أن تكتب للأذن لا للعين، وأن يحمل صوتك الصدق لا التمثيل: متى تصمت، ومتى تبطئ، وكيف تجعل الجملة القصيرة تؤثّر أكثر من فقرة كاملة.',
+    { id: 'L3', n: 3, badge: '3', name: 'العين: لغة الصورة والزاوية', en: 'Leg 3 · The Eye', weeks: [5, 6], color: '#FF8A5B',
+      quote: 'الزاوية ليست مكان الكاميرا… بل موقفك من الإنسان الذي أمامها.',
+      desc: 'كل صورة جملة، وكل زاوية كلمة فيها. من الأسفل قوة، من الأعلى ضعف، على مستوى العين احترام، واللقطة القريبة حميمية. هنا تتعلّم أن تختار الزاوية والضوء والإطار بنيّة — فتقول الصورة ما تريد دون أن تحتاج إلى شرح.',
       tasks: [
-        { id: 'c1', k: 'course', w: 5, lang: 'AR', t: 'فن الأداء الصوتي.. كيف يتحوّل النص إلى قصة حية؟ — معهد الجزيرة للإعلام', url: AJ + 'course-63', why: 'تحليل النص، وأنواع الوقفات، والميكروفون، والسرد.' },
-        { id: 'c2', k: 'read', w: 5, lang: 'AR', t: 'فن التعليق الصوتي للفيلم الوثائقي — مجلة معهد الجزيرة', url: 'https://institute.aljazeera.net/en/node/449' },
-        { id: 'c3', k: 'read', w: 5, lang: 'EN', t: 'Transom · Narration: Writing for the Ear', url: 'https://hearingvoices.com/tow/narration-writing-for-the-ear', why: 'جمل قصيرة، ونبرة حديث، وكيف تمهّد لكلام الضيف — وتمرين لغتك الإنجليزية.' },
-        { id: 'c4', k: 'course', w: 6, paid: 1, lang: 'EN', t: 'Werner Herzog Teaches Filmmaking · دروس التعليق والسرد الشخصي (اختر 4)', url: 'https://www.masterclass.com/classes/werner-herzog-teaches-filmmaking' },
-        { id: 'c5', k: 'practice', w: 6, sub: 1, t: '«نسختان»: تعليق صوتي 45 ثانية لمقابلة الرحلة الثانية — نسخة محايدة ونسخة بشعور صادق، ثم أقارن' },
-        { id: 'c6', k: 'review', w: 6, t: 'جلسة استماع مع المشرف: أيّ النسختين أصدق؟' }
+        { id: 'c1', k: 'read', w: 5, lang: 'AR', t: 'أنواع اللقطات وزوايا الكاميرا ومعانيها النفسية — Adobe (عربي)', url: 'https://www.adobe.com/ae_ar/creativecloud/video/production/cinematography/camera-shots-and-angles.html', why: 'الزاوية المنخفضة قوة، ومستوى العين احترام، واللقطة القريبة حميمية.' },
+        { id: 'c2', k: 'read', w: 5, lang: 'EN', t: 'StudioBinder · The Ultimate Guide to Camera Shots', url: 'https://studiobinder.com/blog/types-of-camera-shots/' },
+        { id: 'c3', k: 'course', w: 5, paid: 1, lang: 'EN', t: 'Annie Leibovitz Teaches Photography · دروس البورتريه والضوء (اختر 5)', url: 'https://www.masterclass.com/classes/annie-leibovitz-teaches-photography', why: 'ضمن العضوية نفسها: كيف تبني بورتريه يقول من هو الإنسان.' },
+        { id: 'c4', k: 'practice', w: 5, sub: 1, t: '«زاوية واحدة، ثلاثة معانٍ»: الشخص نفسه من الأسفل، وعلى مستوى العين، ومن الأعلى + لقطة واسعة وأخرى قريبة — وأكتب ما تقوله كل صورة' },
+        { id: 'c5', k: 'read', w: 6, lang: 'AR', t: 'البرنامج العربي للتصوير الوثائقي — أدرس 3 مقالات مصوّرة: لماذا اختار المصوّر هذا الترتيب؟', url: 'https://www.arabdocphotography.org/project/86', why: 'قصص مصوّرة عربية شخصية وعاطفية تشبه قصص مجتمعنا.' },
+        { id: 'c6', k: 'practice', w: 6, sub: 1, t: '«الضوء يحكي»: 6 صور لمكان واحد في ممكن في 3 أوقات مختلفة من اليوم — ما الشعور الذي يصنعه كل ضوء؟' },
+        { id: 'c7', k: 'review', w: 6, t: 'جلسة مع المشرف على الزوايا والضوء' }
       ] },
 
     { id: 'L4', n: 4, badge: '4', name: 'الهبوط: قصة الأثر', en: 'Leg 4 · Landing — The Impact Story', weeks: [7, 8], color: '#3AC0EB',
       quote: 'نسعى في هذه الحياة لترك الأثر. — مهند',
-      desc: 'كل ما تعلّمته يجتمع في قصة واحدة: إنسان حقيقي، رحلة شعورية لها بداية ووسط ونهاية، زوايا مختارة بنيّة، وصوتك أنت. والذكاء الاصطناعي هنا مساعد صامت للمهام المرهقة فقط — لا يصنع اللحظة ولا يكتب صوتك.',
+      desc: 'كل ما تعلّمته يجتمع في قصة واحدة: إنسان حقيقي، رحلة شعورية لها بداية ووسط ونهاية، وصور بزوايا مختارة بنيّة. والذكاء الاصطناعي هنا مساعد صامت للمهام المرهقة فقط — لا يصنع اللحظة ولا يغيّر الحقيقة.',
       tasks: [
         { id: 'd1', k: 'course', w: 7, lang: 'EN', t: 'Vertical Storytelling — Al Jazeera Media Institute', url: 'https://elearning.aljazeera.net/en/courses/vertical-storytelling', why: 'بُنى القصة العمودية، والحبكة والنهاية، وقياس الأثر.' },
-        { id: 'd2', k: 'read', w: 7, lang: 'AR', t: 'أنواع اللقطات وزوايا الكاميرا ومعانيها النفسية — Adobe (عربي)', url: 'https://www.adobe.com/ae_ar/creativecloud/video/production/cinematography/camera-shots-and-angles.html', why: 'الزاوية المنخفضة قوة، ومستوى العين احترام، واللقطة القريبة حميمية.' },
         { id: 'd3', k: 'ai', w: 7, lang: 'AR', t: 'الذكاء الاصطناعي للجميع (الوحدتان 1 و2) — DeepLearning.AI على Coursera بالعربية', url: 'https://www.coursera.org/learn/ai-for-everyone-ar' },
         { id: 'd4', k: 'ai', w: 7, t: 'أقرأ «قواعد الذكاء الاصطناعي في غرفة التحرير» في أسفل الصفحة — وأكتب ما سأستخدم فيه الذكاء الاصطناعي في مشروعي النهائي وما لن أستخدمه فيه', sub: 1 },
         { id: 'd5', k: 'course', w: 7, paid: 1, lang: 'EN', t: 'Ken Burns · الدروس 15 – 26 (البناء، والمونتاج، والموسيقى)', url: MC },
-        { id: 'd6', k: 'project', w: 8, sub: 1, t: 'قصة الأثر: فيلم قصير 2 – 3 دقائق عن إنسان حقيقي — رحلة شعورية، زوايا مختارة بنيّة، تعليقك بصوتك، وسجلّ قصير لما ساعد فيه الذكاء الاصطناعي' },
+        { id: 'd6', k: 'project', w: 8, sub: 1, t: 'قصة الأثر: مقال مصوّر من 8 – 10 صور عن إنسان حقيقي برحلة شعورية وتعليقات قصيرة، ونسخة عمودية قصيرة للمنصّات — وسجلّ قصير لما ساعد فيه الذكاء الاصطناعي' },
         { id: 'd7', k: 'milestone', w: 8, t: 'الهبوط: عرض «قصة الأثر» أمام فريق المركز الإعلامي' },
         { id: 'd8', k: 'write', w: 8, sub: 1, t: 'رسالة ثانية إلى «المبدع الصغير» — ماذا تغيّر في نظرتك إلى الكاميرا منذ رسالتك الأولى؟' },
         { id: 'd9', k: 'write', w: 8, optional: 1, t: '(اختياري) مشروعي الصغير في صفحة: خدمة تصوير أو محتوى يمكن أن أقدّمها، لمن، وبكم — للنقاش مع المشرف' }
@@ -91,7 +92,7 @@ window.TRACKER = {
     'ما الشعور الذي يجب أن يبقى عند من يشاهد؟ (كلمة واحدة)',
     'من صاحب القصة؟ هل أخذت موافقته؟',
     'البطاريات وبطاقات الذاكرة ومساحتها',
-    'اختبار الميكروفون ومستوى الصوت وضجيج المكان',
+    'الضوء: من أين يأتي؟ وهل الوجه واضح أم في الظل؟',
     'قائمة اللقطات: واسعة، متوسطة، قريبة، وتفصيلة واحدة',
     'نيّة الزاوية: لماذا هذه الزاوية بالذات؟',
     'أول 3 ثوانٍ: ما الذي سيشدّ المشاهد؟',
@@ -100,8 +101,7 @@ window.TRACKER = {
 
   resources: [
     { h: '🎓 الدورات الأساسية', items: [
-      { t: 'Ken Burns Teaches Documentary Filmmaking', by: 'MasterClass · 26 درسًا', lang: 'EN', paid: 'نحو 120$ سنويًا', url: MC, d: 'العضوية نفسها تفتح Werner Herzog وJimmy Chin وAva DuVernay.' },
-      { t: 'فن الأداء الصوتي', by: 'معهد الجزيرة للإعلام', lang: 'AR', url: AJ + 'course-63', d: 'المشاهدة متاحة على منصة المعهد — الشهادة اختيارية.' },
+      { t: 'Ken Burns Teaches Documentary Filmmaking', by: 'MasterClass · 26 درسًا', lang: 'EN', paid: 'نحو 120$ سنويًا', url: MC, d: 'العضوية نفسها تفتح Annie Leibovitz في التصوير، وJimmy Chin في تصوير المغامرة.' },
       { t: 'من الفكرة إلى النشر.. كيف تصنع قصتك الرقمية؟', by: 'معهد الجزيرة · AJ+', lang: 'AR', url: AJ + 'course-183' },
       { t: 'الوسائط المتعددة.. أدواتك لتشكيل سرد قصصي جذاب', by: 'معهد الجزيرة للإعلام', lang: 'AR', url: AJ + 'course-58' },
       { t: 'وثائقي الهاتف المحمول', by: 'معهد الجزيرة للإعلام', lang: 'AR', url: AJ + 'course-61' },
@@ -112,10 +112,16 @@ window.TRACKER = {
       { t: 'Lessons from the Screenplay', by: 'YouTube', lang: 'EN', url: 'https://www.youtube.com/channel/UCErSSa3CaP_GJxmFpdjG9Jw', kind: 'قناة', d: 'بناء القصة والشخصية.' },
       { t: 'StudioBinder', by: 'YouTube', lang: 'EN', url: 'https://www.youtube.com/channel/UCUFoQUaVRt3MVFxqwPUMLCQ', kind: 'قناة', d: 'اللقطات والزوايا والتكوين.' }
     ] },
+    { h: '🎙 مكمّل لاحقًا: التعليق الصوتي', items: [
+      { t: 'فن الأداء الصوتي', by: 'معهد الجزيرة للإعلام', lang: 'AR', url: AJ + 'course-63', d: 'بعد أن تتقن الصورة: كيف يتحوّل النص إلى قصة حيّة.' },
+      { t: 'فن التعليق الصوتي للفيلم الوثائقي', by: 'مجلة معهد الجزيرة', lang: 'AR', url: 'https://institute.aljazeera.net/en/node/449' },
+      { t: 'Narration: Writing for the Ear', by: 'Transom', lang: 'EN', url: 'https://hearingvoices.com/tow/narration-writing-for-the-ear' },
+      { t: 'Werner Herzog Teaches Filmmaking', by: 'MasterClass · ضمن العضوية', lang: 'EN', paid: 'ضمن العضوية', url: 'https://www.masterclass.com/classes/werner-herzog-teaches-filmmaking' }
+    ] },
     { h: '📖 كتب', items: [
       { t: 'اللغة السينمائية — مارسيل مارتان', by: 'ترجمة سعد مكاوي · أقلام عربية', lang: 'AR', paid: 'للشراء', url: 'https://www.abjjad.com/book/2778169348/%D8%A7%D9%84%D9%84%D8%BA%D8%A9-%D8%A7%D9%84%D8%B3%D9%8A%D9%86%D9%85%D8%A7%D8%A6%D9%8A%D8%A9/2779217924' },
       { t: 'In the Blink of an Eye — Walter Murch', by: 'Silman-James', lang: 'EN', paid: 'نحو 14$', url: 'https://www.porchlightbooks.com/product/in-the-blink-of-an-eye-a-perspective-on-film-editing--walter-murch/isbn/9781879505629', d: 'قاعدة المونتاج الأولى: العاطفة.' },
-      { t: 'Out on the Wire — Jessica Abel', by: 'Penguin Random House', lang: 'EN', paid: 'نحو 20$', url: 'https://www.penguinrandomhouse.com/books/225054/out-on-the-wire-by-abel-jessica/9780385348430', d: 'كيف تُبنى القصص الصوتية — مفيد للتعليق.' }
+      { t: "The Photographer's Eye — Michael Freeman", by: 'Ilex Press', lang: 'EN', paid: 'للشراء', url: 'https://openlibrary.org/search?q=The+Photographer%27s+Eye+Michael+Freeman', d: 'التكوين والإطار: كيف تقرأ الصورة وتبنيها.' }
     ] }
   ]
 };

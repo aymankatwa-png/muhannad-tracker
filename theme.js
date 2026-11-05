@@ -130,8 +130,8 @@ function bbInit() {
   var el = $('#bbCard'); if (!el) return;
   el.innerHTML = '<div class="tool-h"><span class="tool-ico">◼</span><h3>الصندوق الأسود</h3></div>' +
     '<p class="tool-p">الصندوق الأسود في الطائرة لا يبحث عن مذنب — يبحث عمّا حدث، لكي لا يتكرّر. اكتب هنا أي خطأ أو موقف صعب، بلا قسوة على نفسك.</p>' +
-    '<div class="bb-form" id="bbForm"><label for="bbA">ماذا حدث؟</label><textarea id="bbA" maxlength="600" placeholder="مثال: نسيت اختبار الميكروفون، فخرج الصوت ضعيفًا في المقابلة."></textarea>' +
-    '<label for="bbB">ماذا تعلّمت؟ وماذا سأفعل في المرة القادمة؟</label><textarea id="bbB" maxlength="600" placeholder="مثال: أضفت «اختبار الصوت» إلى قائمتي، وسأسجّل 10 ثوانٍ تجريبية قبل كل مقابلة."></textarea>' +
+    '<div class="bb-form" id="bbForm"><label for="bbA">ماذا حدث؟</label><textarea id="bbA" maxlength="600" placeholder="مثال: صوّرت والشمس خلف الشخص، فخرج وجهه مظلمًا."></textarea>' +
+    '<label for="bbB">ماذا تعلّمت؟ وماذا سأفعل في المرة القادمة؟</label><textarea id="bbB" maxlength="600" placeholder="مثال: أضفت «من أين يأتي الضوء؟» إلى قائمتي، وسألتقط صورة تجريبية قبل كل بورتريه."></textarea>' +
     '<div><button class="btn btn-main btn-sm" id="bbSave">حفظ في الصندوق</button></div></div>' +
     '<div class="bb-lock hidden" id="bbLock"></div><div class="bb-list" id="bbList"></div>';
   $('#bbSave').addEventListener('click', function () {
@@ -204,7 +204,7 @@ T.hooks = {
     return ({
       L1: { ico: '🛫', h: 'أقلعتَ يا كابتن!', p: 'اكتملت المرحلة الأولى. عرفتَ لماذا تصوّر — وهذا أصعب سؤال في الرحلة كلها.' },
       L2: { ico: '📡', h: 'الاتصال ثابت', p: 'اكتملت المرحلة الثانية. الناس قبل الكاميرا — وأنت الآن تعرف كيف تكسب ثقتهم.' },
-      L3: { ico: '🎙', h: 'صوتك وصل', p: 'اكتملت المرحلة الثالثة. تعليقك لم يعد شرحًا للصورة، بل شعورًا يحملها.' },
+      L3: { ico: '📷', h: 'عينك صارت تتكلّم', p: 'اكتملت المرحلة الثالثة. صرت تختار الزاوية والضوء بنيّة — والصورة تقول ما تريد دون شرح.' },
       L4: { ico: '🛬', h: 'هبوط آمن — الجناحان لك', p: 'اكتملت الرحلة كلها. قصة الأثر صارت حقيقة، والجناحان يحملان اسمك.' }
     })[ch.id] || { ico: '✈', h: 'اكتملت المرحلة', p: '' };
   }
