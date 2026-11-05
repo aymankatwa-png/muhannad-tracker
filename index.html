@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A1324">
+<title>سجلّ الطيران — مهند · وحدة التصوير · المركز الإعلامي — ممكن</title>
+<meta name="description" content="سجلّ الطيران: مسار مهند في السرد القصصي والتعليق الصوتي وصناعة المحتوى الإنساني — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="base.css?v=1">
+<link rel="stylesheet" href="app.css?v=1">
+</head>
+<body>
+
+<!-- ============ who is on board ============ -->
+<div class="veil hidden" id="rolePicker">
+  <div class="veil-card">
+    <img class="veil-st" src="assets/sticker-sm.webp" alt="" width="130" height="130">
+    <h2>من في قمرة القيادة؟</h2>
+    <p>الإجابة تُحفَظ على هذا الجهاز فقط — ويمكن تغييرها في أي وقت.</p>
+    <div class="pick-row">
+      <button class="btn btn-main" data-role="me">أنا الكابتن مهند ✈</button>
+      <button class="btn btn-ghost" data-role="manager">برج المراقبة (المشرف)</button>
+    </div>
+    <div class="pin-row hidden" id="pinRow">
+      <input id="pinInput" inputmode="numeric" maxlength="6" placeholder="رمز المشرف" dir="ltr" autocomplete="off">
+      <button class="btn btn-main btn-sm" id="pinGo">دخول</button>
+      <div class="pin-err hidden" id="pinErr">الرمز غير صحيح — حاول مجددًا.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ sync bar ============ -->
+<div class="syncbar">
+  <div class="syncbar-in">
+    <span class="dot" id="syncDot"></span>
+    <span class="sync-txt" id="syncTxt">حفظ محلي فقط</span>
+    <span class="grow"></span>
+    <span class="role-badge" id="roleBadge">—</span>
+    <button class="btn btn-ghost btn-xs" id="btnSwitchRole">تبديل</button>
+    <button class="btn btn-main btn-xs" id="btnSyncNow">مزامنة الآن</button>
+    <button class="btn btn-ghost btn-xs" id="btnSetup">إعدادات الحفظ</button>
+  </div>
+  <div class="setup hidden" id="setupPanel">
+    <div class="setup-in">
+      <div class="field"><label>GitHub Gist ID</label><input id="inGist" placeholder="a1b2c3d4…" autocomplete="off" spellcheck="false" dir="ltr"></div>
+      <div class="field"><label>GitHub Token · gist scope</label><input id="inToken" type="password" placeholder="ghp_…" autocomplete="off" dir="ltr"></div>
+      <div class="field narrow"><label>اسم الملف</label><input id="inFile" dir="ltr" spellcheck="false"></div>
+      <button class="btn btn-main btn-sm" id="btnSaveSetup">حفظ وربط</button>
+      <div class="setup-note">البيانات تُحفظ في ملف Gist خاص. التوكن يبقى على هذا الجهاز فقط.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ hero: the night sky ============ -->
+<header class="hero" id="hero">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <div class="hero-top">
+      <img class="logo" src="assets/logo-white.png" alt="ممكن — منظمة ممكن للتوعية والإعلام" width="132" height="44">
+      <div class="unit-tag en">Media Center · <b>Photography Unit</b></div>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="kicker">سجلّ الطيران · <span class="en">Flight Log MMC-2026</span></div>
+        <h1 class="hero-title"><span class="l1">كابتن مهند،</span><span class="l2">وجهتك هذه المرة: <em>الأثر</em></span></h1>
+        <p class="hero-lead">قلتَ في رسالتك: «نسعوا في هذه الحياة لترك الأثر». الطائرة التي حلمتَ بها لم تُغلق بابها — تغيّر شكلها فقط. الكاميرا والصوت والقصة هي قمرة قيادتك الآن، وكل شخص تصوّره راكب يثق بك.</p>
+        <div class="hero-cta">
+          <a class="btn btn-main" href="#week">خطة رحلة هذا الأسبوع</a>
+          <a class="btn btn-ghost" href="#preflight">قائمة ما قبل الإقلاع</a>
+        </div>
+      </div>
+
+      <div class="cockpit" id="cockpit">
+        <div class="adi" id="adi" aria-label="مؤشّر التقدّم">
+          <svg viewBox="0 0 240 240" class="adi-svg">
+            <defs>
+              <clipPath id="adiClip"><circle cx="120" cy="120" r="88"/></clipPath>
+              <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2D7FC1"/><stop offset="1" stop-color="#7FD1FF"/></linearGradient>
+              <linearGradient id="gndG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A5A2B"/><stop offset="1" stop-color="#4A2F17"/></linearGradient>
+            </defs>
+            <circle cx="120" cy="120" r="116" fill="#0B1427" stroke="rgba(255,255,255,.12)" stroke-width="2"/>
+            <circle cx="120" cy="120" r="104" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="10"/>
+            <circle id="adiArc" cx="120" cy="120" r="104" fill="none" stroke="#F4B942" stroke-width="10" stroke-linecap="round" transform="rotate(-90 120 120)" stroke-dasharray="653.5" stroke-dashoffset="653.5"/>
+            <g clip-path="url(#adiClip)">
+              <g id="adiHorizon">
+                <rect x="-60" y="-80" width="360" height="200" fill="url(#skyG)"/>
+                <rect x="-60" y="120" width="360" height="200" fill="url(#gndG)"/>
+                <line x1="-60" y1="120" x2="300" y2="120" stroke="#fff" stroke-width="2"/>
+                <g stroke="rgba(255,255,255,.75)" stroke-width="1.6">
+                  <line x1="100" y1="100" x2="140" y2="100"/><line x1="108" y1="80" x2="132" y2="80"/>
+                  <line x1="100" y1="140" x2="140" y2="140"/><line x1="108" y1="160" x2="132" y2="160"/>
+                </g>
+              </g>
+            </g>
+            <circle cx="120" cy="120" r="88" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="3"/>
+            <path d="M70 124 h30 l8 10 h24 l8 -10 h30" fill="none" stroke="#F4B942" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="120" cy="124" r="4" fill="#F4B942"/>
+          </svg>
+          <div class="adi-read"><b id="adiPct" class="en">0%</b><span>من الرحلة</span></div>
+        </div>
+        <img class="hero-st" id="heroSt" src="assets/sticker.webp" alt="مهند — كابتن الرحلة" width="300" height="300">
+      </div>
+    </div>
+
+    <div class="route" aria-label="مسار الأسابيع الثمانية">
+      <svg viewBox="0 0 1000 190" id="routeSvg" preserveAspectRatio="xMidYMid meet">
+        <path id="routeBase" d="M960 150 C 760 10, 240 10, 40 150" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2.5" stroke-dasharray="6 9"/>
+        <path id="routeDone" d="M960 150 C 760 10, 240 10, 40 150" fill="none" stroke="#F4B942" stroke-width="3.5" stroke-linecap="round"/>
+        <g id="routePts"></g>
+        <g id="plane"><path d="M0 -3 L-14 -3 L-22 -14 L-27 -14 L-21 -3 L-34 -3 L-39 -9 L-43 -9 L-40 0 L-43 9 L-39 9 L-34 3 L-21 3 L-27 14 L-22 14 L-14 3 L0 3 Q6 0 0 -3Z" fill="#fff" transform="scale(-1,1)"/></g>
+      </svg>
+      <div class="route-ends"><span>✈ الإقلاع · 8 نوفمبر</span><span>الهبوط · 31 ديسمبر 🛬</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ============ boarding pass ============ -->
+<section class="sec sec-pass">
+  <div class="wrap">
+    <div class="pass rv" id="pass">
+      <div class="pass-main">
+        <div class="pass-top"><img src="assets/logo-white.png" alt="" width="90" height="30"><span class="en">BOARDING PASS · بطاقة الصعود</span></div>
+        <div class="pass-route">
+          <div><small>FROM · من</small><b>المبدع الصغير</b><i class="en">MOPI</i></div>
+          <div class="pass-plane">✈</div>
+          <div><small>TO · إلى</small><b>الأثر</b><i class="en">IMPACT</i></div>
+        </div>
+        <div class="pass-grid">
+          <div><small>الكابتن</small><b>مهند</b></div>
+          <div><small>الرحلة</small><b class="en">MMC-2026</b></div>
+          <div><small>البوابة</small><b id="pGate" class="en">W1</b></div>
+          <div><small>المرحلة الحالية</small><b id="pLeg">—</b></div>
+          <div><small>أسابيع على الموعد</small><b id="pStreak" class="en">0</b></div>
+          <div><small>هدف الدراسة</small><b id="pStudy" class="en">0/0</b></div>
+        </div>
+      </div>
+      <div class="pass-stub">
+        <small>اكتمال الرحلة</small>
+        <b id="pPct" class="en">0%</b>
+        <div class="pass-bar"><i id="pBar"></i></div>
+        <div class="barcode" aria-hidden="true"></div>
+        <small id="pStatus">BOARDING</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ this week ============ -->
+<section class="sec" id="week">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">Flight plan</div><h2>خطة رحلة هذا الأسبوع</h2></div></div>
+    <div class="card rv" id="weekCard"></div>
+  </div>
+</section>
+
+<!-- ============ pre-flight + black box ============ -->
+<section class="sec sec-tools" id="preflight">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">Captain's tools</div><h2>أدوات الكابتن</h2><p class="sec-sub">الطيّار المحترف لا يعتمد على ذاكرته. قبل كل إقلاع قائمة، وبعد كل رحلة صندوق أسود — لا للّوم، بل لتكون الرحلة القادمة أفضل.</p></div></div>
+    <div class="tools-grid">
+      <div class="card pf rv" id="pfCard"></div>
+      <div class="card bb rv" id="bbCard"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ studies ============ -->
+<section class="sec" id="studiesSec">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">Ground school · الهندسة الكهربائية</div><h2>المدرسة الأرضية: دراستي</h2><p class="sec-sub">لا طيّار بلا مدرسة أرضية. دراستك في الجامعة جزء من هذه الرحلة، وليست شيئًا خارجها — هي ربع تقدّمك الكامل، وأسبوع الامتحان يصبح أسبوع دراسة أولًا.</p></div></div>
+    <div id="studies" class="rv"></div>
+  </div>
+</section>
+
+<!-- ============ weekly habits ============ -->
+<section class="sec sec-tight">
+  <div class="wrap"><div id="checks" class="rv"></div></div>
+</section>
+
+<!-- ============ manager ============ -->
+<section class="sec hidden" id="mgrSec">
+  <div class="wrap"><div class="mgr" id="mgrPanel"></div></div>
+</section>
+
+<!-- ============ the legs ============ -->
+<section class="sec" id="legs">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">The route</div><h2>مراحل الرحلة</h2><p class="sec-sub">أربع مراحل، كل مرحلة أسبوعان. تنهي المهمة فتصبح «قيد المراجعة» حتى يعتمدها برج المراقبة.</p></div></div>
+    <div id="chapters"></div>
+  </div>
+</section>
+
+<!-- ============ AI = autopilot ============ -->
+<section class="sec" id="ai">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">Autopilot rules</div><h2>الطيّار الآلي يساعد… والكابتن أنت</h2><p class="sec-sub">الذكاء الاصطناعي مثل الطيّار الآلي: مفيد في الرحلات الطويلة، لكنه لا يعرف الركّاب، ولا يشعر بهم، ولا يتحمّل المسؤولية. هذه قواعدنا في المركز الإعلامي.</p></div></div>
+    <div class="ai-grid">
+      <ol class="ai-rules rv">
+        <li><span><b>لا تُضِف ولا تحذف</b> شيئًا من صورة أو لقطة وثائقية. ما حدث أمام الكاميرا هو ما يُنشر.</span></li>
+        <li><span>تنظيف التشويش والأقنعة الذكية <b>مسموح</b> ما دام لا يغيّر المعلومة.</span></li>
+        <li><span><b>لا تكبير بالذكاء الاصطناعي</b> (AI upscaling) لصورة وثائقية أو صورة مسابقة.</span></li>
+        <li><span><b>لا تولّد بشرًا أو أحداثًا</b> واقعية المظهر ثم تقدّمها كأنها حقيقية.</span></li>
+        <li><span>أي صورة أو صوت مولَّد يُكتب عليه بوضوح: <b>«مولَّد بالذكاء الاصطناعي»</b>.</span></li>
+        <li><span>ما يكتبه الذكاء الاصطناعي <b>مسوّدة غير مُتحقَّق منها</b> — أنت تراجع كل معلومة واسم ورقم.</span></li>
+        <li><span>التعليق دقيق، وأي مشهد <b>مُعاد تمثيله</b> يُذكر ذلك صراحة.</span></li>
+        <li><span><b>لا استنساخ لصوت أحد</b> بلا موافقة مكتوبة — حتى صوتك أنت، أعلن إن كان مولَّدًا.</span></li>
+        <li><span>الذكاء الاصطناعي <b>لا يحلّ محلّ إنسان حقيقي</b>، ولا محلّ موافقته على التصوير.</span></li>
+        <li><span>أرفق <b>Content Credentials</b> (سجلّ التعديل) بأعمالك حين تستطيع.</span></li>
+      </ol>
+      <div class="ai-yes rv">
+        <h4>أين يساعدك الطيّار الآلي فعلًا؟</h4>
+        <ul>
+          <li>العصف الذهني: عشر زوايا لقصة واحدة — ثم تختار أنت.</li>
+          <li>تفريغ المقابلات نصيًّا — تأكّد أن الأداة تدعم العربية وراجع النص.</li>
+          <li>ترتيب المسودّة الأولى لتعليقك الصوتي — ثم تعيد كتابتها بصوتك وإحساسك.</li>
+          <li>تنظيف ضجيج الصوت في المونتاج.</li>
+          <li>اقتراح عناوين وصيغ للمنصّات المختلفة.</li>
+        </ul>
+        <p class="ai-src">المصادر: قواعد World Press Photo، ودليل Associated Press، ومبادرة Content Credentials.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ resources ============ -->
+<section class="sec" id="library">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">Flight library</div><h2>مكتبة القمرة</h2><p class="sec-sub">مصادر إضافية بعد المسار — للأيام التي تريد فيها أن تطير أبعد.</p></div></div>
+    <div id="resources" class="rv"></div>
+  </div>
+</section>
+
+<!-- ============ wings ============ -->
+<section class="sec sec-wings">
+  <div class="wrap">
+    <div class="wings rv" id="wings">
+      <svg viewBox="0 0 360 120" class="wings-svg" aria-hidden="true">
+        <g id="wingsG">
+          <path d="M180 60 C 140 30, 70 28, 8 36 C 40 44, 70 50, 96 58 C 70 60, 46 64, 24 74 C 60 76, 100 74, 132 70 C 112 78, 92 88, 78 98 C 120 94, 156 82, 180 66Z"/>
+          <path d="M180 60 C 220 30, 290 28, 352 36 C 320 44, 290 50, 264 58 C 290 60, 314 64, 336 74 C 300 76, 260 74, 228 70 C 248 78, 268 88, 282 98 C 240 94, 204 82, 180 66Z"/>
+          <circle cx="180" cy="62" r="18"/>
+        </g>
+        <text x="180" y="68" text-anchor="middle" class="wings-m">م</text>
+      </svg>
+      <div class="wings-txt">
+        <h3 id="wingsH">جناحا الكابتن</h3>
+        <p id="wingsP">في نهاية الرحلة، حين تكتمل المراحل الأربع، يلمع هذان الجناحان باسمك. ليسا جائزة على السرعة — بل على أنك أوصلت ركّابك بأمان.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <img src="assets/logo-white.png" alt="ممكن" width="102" height="34">
+    <span>وحدة التصوير · المركز الإعلامي — منظمة ممكن للتوعية والإعلام · 2026</span>
+  </div>
+</footer>
+
+<div id="toasts" aria-live="polite"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script src="content.js?v=1"></script>
+<script src="theme.js?v=1"></script>
+<script src="engine.js?v=1"></script>
+</body>
+</html>
