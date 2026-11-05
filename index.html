@@ -57,16 +57,6 @@
   <div class="ws" id="ws">
     <canvas id="sky" aria-hidden="true"></canvas>
     <div class="flash" id="flash" aria-hidden="true"></div>
-    <svg class="hud-lines" id="hudLines" viewBox="-200 -200 400 400" aria-hidden="true">
-      <g id="ladder" stroke="rgba(160,255,200,.55)" stroke-width="1.4" fill="none">
-        <path d="M-90 -80 h50 M40 -80 h50 M-90 -80 v8 M90 -80 v8"/>
-        <path d="M-70 -40 h35 M35 -40 h35"/>
-        <path d="M-120 0 h85 M35 0 h85" stroke-width="2"/>
-        <path d="M-70 40 h35 M35 40 h35" stroke-dasharray="6 5"/>
-        <path d="M-90 80 h50 M40 80 h50 M-90 80 v-8 M90 80 v-8" stroke-dasharray="6 5"/>
-      </g>
-      <g stroke="rgba(160,255,200,.85)" stroke-width="2" fill="none"><circle cx="0" cy="0" r="7"/><path d="M-22 0 h15 M7 0 h15 M0 -7 v-10"/></g>
-    </svg>
     <div class="callout" id="callout" aria-hidden="true"></div>
 
     <div class="wrap ws-top">
@@ -75,7 +65,7 @@
     </div>
 
     <div class="wrap ws-copy" id="wsCopy">
-      <div class="kicker">سجلّ الطيران · <span class="en">Flight Log MMC-2026</span></div>
+      <div class="kicker">سجلّ الرحلة · من 8 نوفمبر إلى 31 ديسمبر</div>
       <h1 class="hero-title"><span class="l1">كابتن مهند،</span><span class="l2">وجهتك هذه المرة: <em>الأثر</em></span></h1>
       <p class="hero-lead">قلتَ في رسالتك: «نسعوا في هذه الحياة لترك الأثر». الطائرة التي حلمتَ بها لم تُغلق بابها — تغيّر شكلها فقط. الكاميرا والقصة هي قمرة قيادتك الآن، وكل شخص تصوّره راكب يثق بك.</p>
       <div class="hero-cta">
@@ -117,7 +107,7 @@
         <path id="routeBase" d="M960 150 C 760 10, 240 10, 40 150" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2.5" stroke-dasharray="6 9"/>
         <path id="routeDone" d="M960 150 C 760 10, 240 10, 40 150" fill="none" stroke="#F4B942" stroke-width="3.5" stroke-linecap="round"/>
         <g id="routePts"></g>
-        <g id="plane"><path d="M0 -3 L-14 -3 L-22 -14 L-27 -14 L-21 -3 L-34 -3 L-39 -9 L-43 -9 L-40 0 L-43 9 L-39 9 L-34 3 L-21 3 L-27 14 L-22 14 L-14 3 L0 3 Q6 0 0 -3Z" fill="#fff" transform="scale(-1,1)"/></g>
+        <g id="plane"><path d="M18 0 C18 -1.8 15.5 -2.6 13 -2.6 L5 -2.6 L-4 -15 L-9 -15 L-3.5 -2.6 L-11 -2.6 L-14.5 -7 L-18 -7 L-15.5 0 L-18 7 L-14.5 7 L-11 2.6 L-3.5 2.6 L-9 15 L-4 15 L5 2.6 L13 2.6 C15.5 2.6 18 1.8 18 0Z" fill="#fff" stroke="#0c1424" stroke-width=".8"/></g>
       </svg>
       <div class="route-ends"><span>✈ الإقلاع · 8 نوفمبر</span><span>الهبوط · 31 ديسمبر 🛬</span></div>
     </div>
@@ -125,7 +115,7 @@
 </section>
 <!-- ============ boarding pass ============ -->
 <section class="sec sec-pass">
-  <div class="jet-lane" id="jetLane" aria-hidden="true"><svg class="jet" id="jet" viewBox="0 0 240 80"><path class="trail" d="M240 40 H900"/><g><path d="M20 40 Q30 30 60 30 H190 Q215 30 228 40 Q215 50 190 50 H60 Q30 50 20 40Z" fill="#F5F8FD"/><path d="M110 32 L80 2 H96 L150 32Z" fill="#D9E2EE"/><path d="M110 48 L80 78 H96 L150 48Z" fill="#C9D4E3"/><path d="M196 32 L214 10 H224 L216 34Z" fill="#F4B942"/><g fill="#13253B"><circle cx="70" cy="38" r="2.4"/><circle cx="82" cy="38" r="2.4"/><circle cx="94" cy="38" r="2.4"/><circle cx="106" cy="38" r="2.4"/><circle cx="118" cy="38" r="2.4"/><circle cx="130" cy="38" r="2.4"/><circle cx="142" cy="38" r="2.4"/><circle cx="154" cy="38" r="2.4"/></g><path d="M24 40 Q30 34 42 34 L44 40Z" fill="#13253B"/></g></svg></div>
+  <div class="jet-lane" id="jetLane" aria-hidden="true"><div class="jet" id="jet"><svg class="airliner" viewBox="0 0 260 90"><path class="trail" d="M252 44 H1200"/><path d="M168 44 L196 74 H182 L146 46Z" fill="#B9C7DA"/><path d="M10 50 Q12 38 40 35 H206 L234 12 H248 L240 40 Q248 46 238 53 H40 Q14 58 10 50Z" fill="#F7F9FC"/><path d="M40 53 H238 Q226 58 200 58 H46 Q24 58 10 50 Q22 56 40 53Z" fill="#DCE4EF"/><path d="M110 47 H152 L198 76 H178Z" fill="#E6ECF4"/><rect x="128" y="55" width="32" height="10" rx="5" fill="#C3CEDD"/><path d="M220 43 H246 L254 52 H236Z" fill="#E6ECF4"/><path d="M234 12 H248 L240 40 H226Z" fill="#F4B942"/><g fill="#1B2B45"><circle cx="58" cy="42" r="2.2"/><circle cx="70" cy="42" r="2.2"/><circle cx="82" cy="42" r="2.2"/><circle cx="94" cy="42" r="2.2"/><circle cx="106" cy="42" r="2.2"/><circle cx="118" cy="42" r="2.2"/><circle cx="130" cy="42" r="2.2"/><circle cx="142" cy="42" r="2.2"/><circle cx="154" cy="42" r="2.2"/><circle cx="166" cy="42" r="2.2"/><circle cx="178" cy="42" r="2.2"/><circle cx="190" cy="42" r="2.2"/></g><path d="M16 46 Q20 40 30 40 L33 46Z" fill="#1B2B45"/><path d="M44 47 H200" stroke="#F4B942" stroke-width="1.6"/></svg></div></div>
   <div class="wrap">
     <div class="pass rv" id="pass">
       <div class="pass-main">

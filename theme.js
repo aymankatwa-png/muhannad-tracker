@@ -65,9 +65,9 @@ function cockpit() {
     if (intro < INTRO) {
       intro += dt;
       var a = intro / INTRO;
-      if (a > .18 && !said.v1) { said.v1 = 1; say('V1'); }
-      if (a > .40 && !said.r) { said.r = 1; say('ROTATE'); }
-      if (a > .66 && !said.c) { said.c = 1; say('POSITIVE CLIMB'); }
+      if (a > .18 && !said.v1) { said.v1 = 1; say('استعد للإقلاع'); }
+      if (a > .40 && !said.r) { said.r = 1; say('إقلاع'); }
+      if (a > .66 && !said.c) { said.c = 1; say('فوق الغيم ✈'); }
       horizonF = a < .42 ? .40 : a < .78 ? .40 + .62 * ease((a - .42) / .36) : 1.02 - .44 * ease((a - .78) / .22);
       speed = .4 + 3.4 * ease(a / .7);
       if (a >= .995) { hero.classList.add('live'); }
@@ -157,67 +157,61 @@ function jet() {
   addEventListener('scroll', upd, { passive: true }); addEventListener('resize', upd); upd();
 }
 
-/* ---------------- instrument panel ---------------- */
-function dial(id, label) {
-  return '<div class="g"><svg viewBox="0 0 200 200" id="' + id + '"></svg><div class="g-l">' + label + '</div></div>';
-}
-function ticks(n, a0, a1, labels) {
-  var s = '';
-  for (var i = 0; i <= n; i++) {
-    var a = (a0 + (a1 - a0) * i / n) * Math.PI / 180, r1 = 80, r2 = i % 1 === 0 ? 68 : 74;
-    s += '<line x1="' + (100 + r1 * Math.sin(a)).toFixed(1) + '" y1="' + (100 - r1 * Math.cos(a)).toFixed(1) + '" x2="' + (100 + r2 * Math.sin(a)).toFixed(1) + '" y2="' + (100 - r2 * Math.cos(a)).toFixed(1) + '" stroke="#cfd8e6" stroke-width="2"/>';
-    if (labels) s += '<text x="' + (100 + 56 * Math.sin(a)).toFixed(1) + '" y="' + (105 - 56 * Math.cos(a)).toFixed(1) + '" fill="#cfd8e6" font-family="Gotham" font-size="13" font-weight="700" text-anchor="middle">' + labels[i] + '</text>';
-  }
-  return s;
-}
+/* ---------------- instrument panel (clear, readable, Arabic) ---------------- */
 var BEZEL = '<circle cx="100" cy="100" r="96" fill="#0a0f19" stroke="#36425c" stroke-width="3"/><circle cx="100" cy="100" r="88" fill="#111827"/>';
-var NEEDLE = function (cls) { return '<g class="needle" id="' + cls + '"><path d="M100 30 L104 100 L100 112 L96 100Z" fill="#F4B942"/><circle cx="100" cy="100" r="8" fill="#2b3549" stroke="#F4B942" stroke-width="2"/></g>'; };
+function arcPath(r, a0, a1) {
+  var p = function (a) { var t = (a - 90) * Math.PI / 180; return (100 + r * Math.cos(t)).toFixed(1) + ' ' + (100 + r * Math.sin(t)).toFixed(1); };
+  return 'M' + p(a0) + ' A' + r + ' ' + r + ' 0 ' + (a1 - a0 > 180 ? 1 : 0) + ' 1 ' + p(a1);
+}
+function gauge(id) {
+  return BEZEL + '<path d="' + arcPath(72, -135, 135) + '" fill="none" stroke="#24304a" stroke-width="12" stroke-linecap="round"/>' +
+    '<path id="' + id + 'A" d="' + arcPath(72, -135, 135) + '" fill="none" stroke="#F4B942" stroke-width="12" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100" class="garc"/>' +
+    '<g class="needle" id="' + id + 'N"><path d="M100 40 L104.5 100 L100 110 L95.5 100Z" fill="#fff"/><circle cx="100" cy="100" r="9" fill="#F4B942"/></g>';
+}
+function dial(id, label) {
+  return '<div class="g"><svg viewBox="0 0 200 200" id="' + id + '"></svg><div class="g-v" id="' + id + 'V">—</div><div class="g-l">' + label + '</div></div>';
+}
 function panelInit() {
   var g = $('#gauges'); if (!g) return;
-  g.innerHTML = dial('gAdi', 'التقدّم الكامل') + dial('gSpd', 'أسابيع متتالية في وقتها') + dial('gAlt', 'ساعات الدراسة هذا الأسبوع') + dial('gHdg', 'الأسبوع الحالي');
-  $('#gAdi').innerHTML = '<defs><clipPath id="ac2"><circle cx="100" cy="100" r="72"/></clipPath><linearGradient id="sk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2D7FC1"/><stop offset="1" stop-color="#8fd6ff"/></linearGradient><linearGradient id="gd2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A5A2B"/><stop offset="1" stop-color="#3f2814"/></linearGradient></defs>' + BEZEL +
-    '<g clip-path="url(#ac2)"><g id="adiH"><rect x="-60" y="-80" width="320" height="180" fill="url(#sk2)"/><rect x="-60" y="100" width="320" height="180" fill="url(#gd2)"/><line x1="-60" y1="100" x2="260" y2="100" stroke="#fff" stroke-width="2"/><g stroke="rgba(255,255,255,.8)" stroke-width="1.6"><line x1="84" y1="84" x2="116" y2="84"/><line x1="90" y1="68" x2="110" y2="68"/><line x1="84" y1="116" x2="116" y2="116"/></g></g></g>' +
-    '<circle id="adiArc2" cx="100" cy="100" r="84" fill="none" stroke="#F4B942" stroke-width="6" stroke-linecap="round" transform="rotate(-90 100 100)" stroke-dasharray="527.8" stroke-dashoffset="527.8"/>' +
-    '<path d="M58 104 h24 l6 8 h24 l6 -8 h24" fill="none" stroke="#F4B942" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '<rect x="70" y="140" width="60" height="24" rx="6" fill="rgba(5,10,20,.85)"/><text id="adiTxt" x="100" y="158" fill="#F4B942" font-family="Gotham" font-weight="900" font-size="16" text-anchor="middle">0%</text>';
-  $('#gSpd').innerHTML = BEZEL + '<path d="M38 150 A76 76 0 1 1 162 150" fill="none" stroke="#3E8E5A" stroke-width="6" opacity=".7"/>' + ticks(8, -135, 135, ['0', '1', '2', '3', '4', '5', '6', '7', '8']) + NEEDLE('nSpd') + '<text x="100" y="150" fill="#9fb0c8" font-family="Gotham" font-size="10" text-anchor="middle" letter-spacing="2">STREAK</text>';
-  $('#gAlt').innerHTML = BEZEL + ticks(10, 0, 324, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '']) + NEEDLE('nAlt') + '<rect x="66" y="128" width="68" height="24" rx="5" fill="#05080f" stroke="#36425c"/><text id="altTxt" x="100" y="145" fill="#fff" font-family="Gotham" font-weight="900" font-size="14" text-anchor="middle">0 h</text>';
-  var rose = '';
-  for (var i = 0; i < 8; i++) { var a = i * 45 * Math.PI / 180; rose += '<text x="' + (100 + 62 * Math.sin(a)).toFixed(1) + '" y="' + (105 - 62 * Math.cos(a)).toFixed(1) + '" fill="#cfd8e6" font-family="Gotham" font-size="13" font-weight="700" text-anchor="middle" transform="rotate(' + (i * 45) + ' ' + (100 + 62 * Math.sin(a)).toFixed(1) + ' ' + (100 - 62 * Math.cos(a)).toFixed(1) + ')">W' + (i + 1) + '</text>'; }
-  for (var t = 0; t < 32; t++) { var b = t * 11.25 * Math.PI / 180; rose += '<line x1="' + (100 + 80 * Math.sin(b)).toFixed(1) + '" y1="' + (100 - 80 * Math.cos(b)).toFixed(1) + '" x2="' + (100 + (t % 4 ? 75 : 70) * Math.sin(b)).toFixed(1) + '" y2="' + (100 - (t % 4 ? 75 : 70) * Math.cos(b)).toFixed(1) + '" stroke="#cfd8e6" stroke-width="1.6"/>'; }
-  $('#gHdg').innerHTML = BEZEL + '<g class="rose" id="rose">' + rose + '</g><path d="M100 14 l7 12 h-14z" fill="#F4B942"/><path d="M100 70 L108 108 L100 102 L92 108Z" fill="#fff"/><path d="M78 96 h44" stroke="#fff" stroke-width="4" stroke-linecap="round"/>';
+  g.innerHTML = dial('gAdi', 'من الرحلة كلها') + dial('gSpd', 'أسابيع متتالية في وقتها') + dial('gAlt', 'ساعات دراسة هذا الأسبوع') + dial('gHdg', 'أين نحن الآن');
+  $('#gAdi').innerHTML = '<defs><clipPath id="ac2"><circle cx="100" cy="100" r="74"/></clipPath><linearGradient id="sk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2D7FC1"/><stop offset="1" stop-color="#8fd6ff"/></linearGradient><linearGradient id="gd2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A5A2B"/><stop offset="1" stop-color="#3f2814"/></linearGradient></defs>' + BEZEL +
+    '<g clip-path="url(#ac2)"><g id="adiH"><rect x="-60" y="-80" width="320" height="180" fill="url(#sk2)"/><rect x="-60" y="100" width="320" height="180" fill="url(#gd2)"/><line x1="-60" y1="100" x2="260" y2="100" stroke="#fff" stroke-width="2.5"/></g></g>' +
+    '<circle id="adiArc2" cx="100" cy="100" r="84" fill="none" stroke="#F4B942" stroke-width="7" stroke-linecap="round" transform="rotate(-90 100 100)" stroke-dasharray="527.8" stroke-dashoffset="527.8"/>' +
+    '<path d="M54 104 h28 l7 9 h22 l7 -9 h28" fill="none" stroke="#F4B942" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>';
+  $('#gSpd').innerHTML = gauge('sp');
+  $('#gAlt').innerHTML = gauge('al');
+  var seg = '';
+  for (var i = 0; i < 8; i++) seg += '<path class="wk" id="wk' + (i + 1) + '" d="' + arcPath(74, i * 45 + 4, i * 45 + 41) + '" fill="none" stroke="#24304a" stroke-width="14"/>';
+  $('#gHdg').innerHTML = BEZEL + seg + '<g class="needle" id="hdN"><path d="M100 36 L106 100 L100 112 L94 100Z" fill="#fff"/><circle cx="100" cy="100" r="9" fill="#F4B942"/></g>';
 }
-var fmsTimer = null, fmsLast = '';
+var fmsLast = '';
 function paintPanel(C) {
   if (!$('#gAdi')) return;
-  var w = curWeek(C), goal = A.studyGoal(), h = A.hours(w);
+  var w = curWeek(C), goal = A.studyGoal(), h = A.hours(w), set = function (id, v) { var n = document.getElementById(id); if (n) n.innerHTML = v; };
   $('#adiArc2').style.strokeDashoffset = 527.8 * (1 - C.pct / 100);
-  $('#adiTxt').textContent = C.pct + '%';
   $('#adiH').style.transform = 'translateY(' + Math.round(C.pct * .3) + 'px)';
-  $('#nSpd').style.transform = 'rotate(' + (-135 + 270 * Math.min(1, C.streak / 8)) + 'deg)';
-  $('#nAlt').style.transform = 'rotate(' + (324 * Math.min(1, h / 10)) + 'deg)';
-  $('#altTxt').textContent = h + ' / ' + goal + ' h';
-  $('#rose').style.transform = 'rotate(' + (-(w - 1) * 45) + 'deg)';
-  /* flight management screen */
+  set('gAdiV', '<bdi dir="ltr">' + C.pct + '%</bdi>');
+  var sp = Math.min(1, C.streak / 8), al = Math.min(1, h / Math.max(1, goal));
+  $('#spA').style.strokeDashoffset = 100 - sp * 100; $('#spN').style.transform = 'rotate(' + (-135 + 270 * sp) + 'deg)';
+  $('#alA').style.strokeDashoffset = 100 - al * 100; $('#alN').style.transform = 'rotate(' + (-135 + 270 * al) + 'deg)';
+  $('#alA').style.stroke = al >= 1 ? '#43B97F' : '#F4B942';
+  set('gSpdV', C.streak + ' <small>' + (C.streak === 1 ? 'أسبوع' : 'أسابيع') + '</small>');
+  set('gAltV', h + ' <small>من ' + goal + '</small>');
+  for (var k = 1; k <= 8; k++) { var p = document.getElementById('wk' + k), st = C.weeksInfo[k - 1].state; p.setAttribute('class', 'wk ' + st); }
+  $('#hdN').style.transform = 'rotate(' + ((w - 1) * 45 + 22.5) + 'deg)';
+  set('gHdgV', C.week === 0 ? 'قبل الإقلاع' : 'الأسبوع ' + w + ' <small>من 8</small>');
+  /* the flight screen — in plain Arabic */
   var cur = C.chs[C.currentIdx], nx = Math.min(T.weeks, w + 1);
   var lines = [
-    '<b>MMC-2026</b>  CAPT MUHANNAD',
-    'LEG ' + (cur.ch.n || 1) + '/4   ' + (cur.ch.en || '').split('·').pop().trim().toUpperCase().slice(0, 18),
-    'TASKS    ' + C.done + '/' + C.total + '   PROG ' + C.pct + '%',
-    'STUDY    ' + h + '/' + goal + ' H  WK ' + w,
-    'NEXT WPT W' + nx + '  ' + A.fmtShort(A.weekStart(nx)),
-    C.allDone ? '<b>LANDED · WINGS EARNED</b>' : 'ETA LANDING  31/12'
+    '<b>الكابتن مهند · رحلة <bdi dir="ltr">MMC-2026</bdi></b>',
+    'المرحلة الحالية: ' + (C.allDone ? 'هبوط آمن' : cur.ch.name),
+    'المهام المعتمدة: ' + C.done + ' من ' + C.total,
+    'المحطة القادمة: الأسبوع ' + nx + ' · ' + A.fmt(A.weekStart(nx)),
+    C.allDone ? '<b>هبطنا — الجناحان لك ✈</b>' : 'موعد الهبوط: 31 ديسمبر'
   ];
-  var full = lines.join('\n');
+  var full = lines.join('|');
   if (full === fmsLast) return; fmsLast = full;
-  var el = $('#fms'), i = 0, plain = full.replace(/<[^>]+>/g, '');
-  clearInterval(fmsTimer);
-  if (reduce) { el.innerHTML = lines.join('<br>'); return; }
-  fmsTimer = setInterval(function () {
-    i += 3;
-    if (i >= plain.length) { clearInterval(fmsTimer); el.innerHTML = lines.join('<br>') + '<span class="cur"></span>'; return; }
-    el.innerHTML = A.esc(plain.slice(0, i)).replace(/\n/g, '<br>') + '<span class="cur"></span>';
-  }, 22);
+  $('#fms').innerHTML = '<div class="fms-h"><span class="fms-dot"></span>شاشة الرحلة</div>' + lines.map(function (l, i) { return '<div class="fms-l" style="--i:' + i + '">' + l + '</div>'; }).join('');
 }
 
 /* ---------------- route ---------------- */
@@ -241,7 +235,7 @@ function paintRoute(C) {
   $('#routeDone').style.strokeDashoffset = L * (1 - f);
   var a = base.getPointAtLength(L * f), b = base.getPointAtLength(Math.min(L, L * f + 2)), c0 = base.getPointAtLength(Math.max(0, L * f - 2));
   var ang = Math.atan2(b.y - c0.y, b.x - c0.x) * 180 / Math.PI;
-  $('#plane').setAttribute('transform', 'translate(' + a.x + ' ' + a.y + ') rotate(' + (ang - 180) + ')');
+  $('#plane').setAttribute('transform', 'translate(' + a.x + ' ' + a.y + ') rotate(' + ang + ')');
   C.weeksInfo.forEach(function (wi, i) { pts[i].setAttribute('class', 'rp ' + wi.state); });
 }
 
