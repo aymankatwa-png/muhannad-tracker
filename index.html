@@ -7,8 +7,8 @@
 <title>سجلّ الطيران — مهند · وحدة التصوير · المركز الإعلامي — ممكن</title>
 <meta name="description" content="سجلّ الطيران: مسار مهند في التصوير والسرد القصصي وصناعة المحتوى الإنساني — وحدة التصوير، المركز الإعلامي في منظمة ممكن. من 8 نوفمبر إلى 31 ديسمبر 2026.">
 <link rel="icon" href="assets/favicon.png">
-<link rel="stylesheet" href="base.css?v=2">
-<link rel="stylesheet" href="app.css?v=2">
+<link rel="stylesheet" href="base.css?v=3">
+<link rel="stylesheet" href="app.css?v=3">
 </head>
 <body>
 
@@ -154,6 +154,33 @@
 </section>
 
 <!-- ============ pre-flight + black box ============ -->
+<!-- ============ the captain's challenge (mini game) ============ -->
+<section class="sec sec-game" id="challenge">
+  <div class="wrap">
+    <div class="sec-head rv"><div><div class="sec-k">استراحة الكابتن</div><h2>تحدّي الكابتن: اعبر غيوم التسويف</h2><p class="sec-sub">حرّك الطائرة بالماوس أو بإصبعك (أو بالأسهم). تجنّب الغيوم الرمادية — «لاحقًا» و«سأبدأ غدًا» وأخواتها — واجمع اللقطات والأفكار وساعات الدراسة. ثلاث محاولات فقط… مثل الأسبوع.</p></div></div>
+    <div class="game rv" id="game">
+      <canvas aria-label="لعبة: طائرة الكابتن تتجنّب غيوم التسويف"></canvas>
+      <div class="g-hud"><span>النقاط <b data-g="score">0</b></span><span data-g="lives">❤❤❤</span><span>أفضل نتيجة <b data-g="best">0</b></span></div>
+      <div class="g-start">
+        <div class="g-card">
+          <div class="g-ico">✈</div>
+          <h3>جاهز للإقلاع يا كابتن؟</h3>
+          <ul class="g-how"><li><b>🖱 / 👆</b> حرّك الطائرة بالماوس أو اسحب بإصبعك</li><li><b>☁</b> الغيمة الرمادية = تسويف · تكلّفك محاولة</li><li><b>📷 ⭐ 🎙 📖</b> اجمعها لتزيد نقاطك</li></ul>
+          <button class="btn btn-main" data-g="go">ابدأ الطيران</button>
+        </div>
+      </div>
+      <div class="g-over" hidden>
+        <div class="g-card">
+          <div class="g-k">انتهت الرحلة</div>
+          <div class="g-final"><b data-g="final">0</b> نقطة</div>
+          <div class="g-rec" data-g="rec" hidden>🏆 رقم قياسي جديد!</div>
+          <p data-g="msg"></p>
+          <div class="g-btns"><button class="btn btn-main" data-g="go">طيران جديد</button><a class="btn btn-ghost btn-glass" href="#week">الآن: مهمة واحدة حقيقية ←</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="sec sec-tools" id="preflight">
   <div class="wrap">
     <div class="sec-head rv"><div><div class="sec-k">Captain's tools</div><h2>أدوات الكابتن</h2><p class="sec-sub">الطيّار المحترف لا يعتمد على ذاكرته. قبل كل إقلاع قائمة، وبعد كل رحلة صندوق أسود — لا للّوم، بل لتكون الرحلة القادمة أفضل.</p></div></div>
@@ -190,37 +217,6 @@
   </div>
 </section>
 
-<!-- ============ AI = autopilot ============ -->
-<section class="sec" id="ai">
-  <div class="wrap">
-    <div class="sec-head rv"><div><div class="sec-k">Autopilot rules</div><h2>الطيّار الآلي يساعد… والكابتن أنت</h2><p class="sec-sub">الذكاء الاصطناعي مثل الطيّار الآلي: مفيد في الرحلات الطويلة، لكنه لا يعرف الركّاب، ولا يشعر بهم، ولا يتحمّل المسؤولية. هذه قواعدنا في المركز الإعلامي.</p></div></div>
-    <div class="ai-grid">
-      <ol class="ai-rules rv">
-        <li><span><b>لا تُضِف ولا تحذف</b> شيئًا من صورة أو لقطة وثائقية. ما حدث أمام الكاميرا هو ما يُنشر.</span></li>
-        <li><span>تنظيف التشويش والأقنعة الذكية <b>مسموح</b> ما دام لا يغيّر المعلومة.</span></li>
-        <li><span><b>لا تكبير بالذكاء الاصطناعي</b> (AI upscaling) لصورة وثائقية أو صورة مسابقة.</span></li>
-        <li><span><b>لا تولّد بشرًا أو أحداثًا</b> واقعية المظهر ثم تقدّمها كأنها حقيقية.</span></li>
-        <li><span>أي صورة أو صوت مولَّد يُكتب عليه بوضوح: <b>«مولَّد بالذكاء الاصطناعي»</b>.</span></li>
-        <li><span>ما يكتبه الذكاء الاصطناعي <b>مسوّدة غير مُتحقَّق منها</b> — أنت تراجع كل معلومة واسم ورقم.</span></li>
-        <li><span>التعليق دقيق، وأي مشهد <b>مُعاد تمثيله</b> يُذكر ذلك صراحة.</span></li>
-        <li><span><b>لا استنساخ لصوت أحد</b> بلا موافقة مكتوبة — حتى صوتك أنت، أعلن إن كان مولَّدًا.</span></li>
-        <li><span>الذكاء الاصطناعي <b>لا يحلّ محلّ إنسان حقيقي</b>، ولا محلّ موافقته على التصوير.</span></li>
-        <li><span>أرفق <b>Content Credentials</b> (سجلّ التعديل) بأعمالك حين تستطيع.</span></li>
-      </ol>
-      <div class="ai-yes rv">
-        <h4>أين يساعدك الطيّار الآلي فعلًا؟</h4>
-        <ul>
-          <li>العصف الذهني: عشر زوايا لقصة واحدة — ثم تختار أنت.</li>
-          <li>تفريغ المقابلات نصيًّا — تأكّد أن الأداة تدعم العربية وراجع النص.</li>
-          <li>الفرز الأولي لمئات الصور — ثم تختار أنت بعينك.</li>
-          <li>تنظيف التشويش في صور الإضاءة المنخفضة — بلا تغيير في المعلومة.</li>
-          <li>اقتراح عناوين وصيغ للمنصّات المختلفة.</li>
-        </ul>
-        <p class="ai-src">المصادر: قواعد World Press Photo، ودليل Associated Press، ومبادرة Content Credentials.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ resources ============ -->
 <section class="sec" id="library">
@@ -261,8 +257,9 @@
 <div id="toasts" aria-live="polite"></div>
 <canvas id="confetti" aria-hidden="true"></canvas>
 
-<script src="content.js?v=2"></script>
-<script src="theme.js?v=2"></script>
-<script src="engine.js?v=2"></script>
+<script src="content.js?v=3"></script>
+<script src="theme.js?v=3"></script>
+<script src="engine.js?v=3"></script>
+<script src="game.js?v=3"></script>
 </body>
 </html>

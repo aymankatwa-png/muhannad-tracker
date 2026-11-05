@@ -340,13 +340,14 @@ function paintPass(C) {
 
 /* ---------------- hooks ---------------- */
 T.hooks = {
-  init: function (api) { A = api; cockpit(); jet(); panelInit(); routeInit(); pfInit(); bbInit(); },
+  init: function (api) { A = api; window.MUH_API = api; cockpit(); jet(); panelInit(); routeInit(); pfInit(); bbInit(); },
   render: function (C) { paintPass(C); paintPanel(C); paintRoute(C); paintPf(C); paintBb(); },
   managerExtra: function (C, api) {
     var w = curWeek(C), habits = T.checks.filter(function (c) { return api.get('c:' + w + ':' + c.id, false); }).length;
     return '<div class="mgr-extra">' +
       '<div class="mgr-box"><b>قائمة ما قبل الإقلاع</b>' + (+api.get('pf:' + w, 0) || 0) + ' هذا الأسبوع · ' + pfTotal() + ' منذ البداية</div>' +
       '<div class="mgr-box"><b>الصندوق الأسود</b>' + bbList().length + ' تسجيلًا (المحتوى خاص بمهند)</div>' +
+      '<div class="mgr-box"><b>تحدّي الكابتن</b>أفضل نتيجة: ' + (+api.get('gameBest', 0) || 0) + ' نقطة</div>' +
       '<div class="mgr-box"><b>عادات الأسبوع ' + w + '</b>' + habits + ' من ' + T.checks.length + '</div></div>';
   },
   celebration: function (ch) {
