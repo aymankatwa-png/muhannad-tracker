@@ -310,8 +310,9 @@ function renderResources() {
   el.dataset.done = 1;
   el.innerHTML = T.resources.map(function (g) {
     return '<div class="rs-group"><h4>' + esc(g.h) + '</h4><div class="rs-list">' + g.items.map(function (r) {
-      return '<a class="rs" href="' + esc(r.url) + '" target="_blank" rel="noopener"><span class="rs-t">' + txt(r.t) + '</span><span class="rs-m">' + txt(r.by) + '</span>' +
-        '<span class="rs-tags"><i class="lang">' + r.lang + '</i>' + (r.paid ? '<i class="paid">' + esc(r.paid) + '</i>' : '') +(r.kind ? '<i>' + esc(r.kind) + '</i>' : '') + '</span>' + (r.d ? '<span class="rs-d">' + esc(r.d) + '</span>' : '') + '</a>';
+      var tag = r.url ? 'a' : 'div';
+      return '<' + tag + ' class="rs' + (r.url ? '' : ' rs-lib') + '"' + (r.url ? ' href="' + esc(r.url) + '" target="_blank" rel="noopener"' : '') + '><span class="rs-t">' + txt(r.t) + '</span><span class="rs-m">' + txt(r.by) + '</span>' +
+        '<span class="rs-tags"><i class="lang">' + r.lang + '</i>' + (r.paid ? '<i class="paid">' + esc(r.paid) + '</i>' : '') +(r.kind ? '<i>' + esc(r.kind) + '</i>' : '') + '</span>' + (r.d ? '<span class="rs-d">' + esc(r.d) + '</span>' : '') + '</' + tag + '>';
     }).join('') + '</div></div>';
   }).join('');
 }
