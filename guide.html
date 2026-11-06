@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0A1324">
+<title>كيف أستخدم سجلّ الطيران؟ · مهند · وحدة التصوير · ممكن</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="base.css?v=7">
+<link rel="stylesheet" href="app.css?v=7">
+<style>
+.g-hero{padding:30px 0 18px;background:radial-gradient(900px 500px at 85% -20%,#1b3a6b 0%,transparent 65%)}
+.g-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.g-back{font-weight:700;font-size:15px;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.g-back:hover{text-decoration:underline}
+.g-k{margin-top:26px;color:var(--accent2);font-weight:700;font-size:13px;letter-spacing:.04em}
+.g-title{margin:4px 0 8px;font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--ink);line-height:1.3}
+.g-title span{color:var(--accent)}
+.g-lead{font-size:16.5px;color:var(--body);max-width:700px;line-height:1.9;margin:0}
+.g-note{margin:16px 0 0;max-width:700px;background:rgba(127,209,255,.08);border:1px solid rgba(127,209,255,.3);border-radius:14px;padding:12px 16px;color:var(--body);font-size:15px;line-height:1.85}
+.g-note b{color:var(--accent2)}
+.g-map{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 6px}
+.g-map a{display:flex;flex-direction:column;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;text-decoration:none;color:var(--muted);font-size:13.5px;transition:transform .2s,border-color .2s}
+.g-map a:hover{transform:translateY(-3px);border-color:var(--line2)}
+.g-map b{color:var(--ink);font-size:15px}
+.g-map i{font-style:normal;color:var(--accent);font-weight:800;font-size:12px}
+.g-part{margin:36px 0 12px;display:flex;align-items:center;gap:12px}
+.g-part span{width:34px;height:34px;border-radius:10px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:900}
+.g-part h2{margin:0;font-size:23px;font-weight:800;color:var(--ink)}
+.steps{display:grid;gap:12px}
+.step{display:grid;grid-template-columns:50px 1fr minmax(0,300px);gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.sn{width:44px;height:44px;border-radius:12px;background:var(--surface2);color:var(--accent);display:grid;place-items:center;font-weight:900;font-size:19px;box-shadow:inset 0 0 0 1px var(--line2)}
+.step h3{margin:0 0 4px;font-size:17.5px;font-weight:800;color:var(--ink)}
+.step p{margin:0;font-size:15px;line-height:1.85;color:var(--body)}
+.step p b{color:var(--accent)}
+.mock{background:#060C18;border-radius:12px;padding:14px;border:1px solid var(--line2);display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;min-height:92px;font-size:13px;color:var(--muted)}
+.mock .row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;align-items:center}
+.mb{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:7px 14px;font-weight:700;font-size:13px;background:var(--accent);color:var(--accent-ink);white-space:nowrap}
+.mb.gh{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line2)}
+.mf{width:100%;border:1.5px dashed var(--line2);border-radius:8px;padding:7px 10px;text-align:start;font-size:12.5px;color:var(--muted);background:var(--bg2)}
+.mk{display:inline-flex;width:18px;height:18px;border-radius:5px;border:2px solid var(--line2)}
+.mk.on{background:#5BD08D;border-color:#5BD08D}
+.tg{display:inline-block;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700}
+.tg.wait{background:rgba(244,185,66,.15);color:var(--accent)}.tg.ok{background:rgba(91,208,141,.18);color:#5BD08D}
+.rs{display:inline-flex;align-items:center;gap:6px;border-radius:9px;padding:5px 10px;font-weight:700;font-size:12.5px;border:1px solid var(--line2);color:var(--muted)}
+.rs i{font-style:normal;font-family:'Gotham',monospace;font-size:9px;letter-spacing:.1em}
+.rs.r1{color:var(--accent);border-color:rgba(244,185,66,.6);background:rgba(244,185,66,.1)}
+.rs.r2{color:#062014;background:#5BD08D;border-color:#5BD08D}
+.arrow{color:var(--accent);font-weight:900}
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tip{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.tip b{display:block;color:var(--ink);font-size:16px;margin-bottom:4px}
+.tip p{margin:0;font-size:14.5px;line-height:1.8;color:var(--body)}
+.tip.key{border-color:rgba(127,209,255,.45);background:linear-gradient(135deg,rgba(127,209,255,.10),var(--surface))}
+.g-end{text-align:center;margin:40px 0 10px}
+@media (max-width:900px){ .g-map{grid-template-columns:repeat(2,1fr)} .tips{grid-template-columns:1fr} }
+@media (max-width:720px){ .step{grid-template-columns:42px 1fr} .step .mock{grid-column:1 / -1} .sn{width:38px;height:38px;font-size:16px} }
+</style>
+</head>
+<body>
+<header class="g-hero">
+  <div class="wrap">
+    <div class="g-top">
+      <a class="g-back" href="./">→ العودة إلى سجلّ الطيران</a>
+      <img class="logo" src="assets/logo-white.png" alt="ممكن" width="132" height="44">
+    </div>
+    <div class="g-k">دليل الكابتن</div>
+    <h1 class="g-title">كيف أستخدم <span>سجلّ الطيران</span>؟ ✈</h1>
+    <p class="g-lead">دليل قصير في <bdi dir="ltr">4</bdi> أجزاء: الإعداد مرة واحدة، ثم ما تفعله كل أسبوع، ثم أدوات الكابتن، ثم نصائح. يكفيك منه نحو <bdi dir="ltr">10</bdi> دقائق في الأسبوع.</p>
+    <p class="g-note">هذا السجلّ <b>ليس أداة محاسبة</b>، بل رفيق يرتّب لك رحلتك ويحفظ ما تنجزه. يتابع معك مديرك المباشر <b>أمين</b>، مدير وحدة التصوير، من «برج المراقبة». <b>ودراستك أولًا دائمًا.</b></p>
+    <nav class="g-map">
+      <a href="#p1"><i>الجزء 1</i><b>الإعداد</b>مرة واحدة فقط</a>
+      <a href="#p2"><i>الجزء 2</i><b>كل أسبوع</b>المهام والدراسة والريلز</a>
+      <a href="#p3"><i>الجزء 3</i><b>أدوات الكابتن</b>القائمة والصندوق الأسود</a>
+      <a href="#p4"><i>الجزء 4</i><b>نصائح</b>لتستفيد أكثر</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="g-part" id="p1"><span>1</span><h2>الإعداد: مرة واحدة فقط</h2></div>
+  <div class="steps">
+    <div class="step"><div class="sn">1</div><div><h3>افتح الرابط واختر «أنا الكابتن مهند ✈»</h3><p>أول مرة تفتح فيها السجلّ على أي جهاز سيسألك من أنت. اختر اسمك. الاختيار يُحفظ على هذا الجهاز، ويمكنك تغييره من زر <b>«تبديل»</b> في الشريط العلوي.</p></div>
+      <div class="mock"><div class="row"><span class="mb">أنا الكابتن مهند ✈</span><span class="mb gh">برج المراقبة (المشرف)</span></div></div></div>
+    <div class="step"><div class="sn">2</div><div><h3>اربط الحفظ</h3><p>اضغط <b>«إعدادات الحفظ»</b> والصق البيانات الثلاث التي وصلتك في البريد: <b>Gist ID</b> و<b>Token</b> و<b>اسم الملف</b>، ثم <b>«حفظ وربط»</b>. بعدها يُحفظ كل شيء تلقائيًا وتظهر كلمة «متزامن».</p></div>
+      <div class="mock"><div class="mf">GitHub Gist ID</div><div class="mf">GitHub Token</div><span class="mb">حفظ وربط</span></div></div>
+    <div class="step"><div class="sn">3</div><div><h3>أضف موادّك ومواعيد امتحاناتك</h3><p>في <b>«المدرسة الأرضية: دراستي»</b> اكتب اسم كل مادة وتاريخ امتحانها ثم <b>«إضافة»</b>. أسبوع الامتحان يصبح تلقائيًا <b>أسبوع دراسة أولًا</b>، فلا تُطالَب فيه بمهام لا وقت لها.</p></div>
+      <div class="mock"><div class="row"><div class="mf" style="width:110px">اسم المادة</div><div class="mf" style="width:90px">dd/mm</div><span class="mb">إضافة</span></div></div></div>
+  </div>
+
+  <div class="g-part" id="p2"><span>2</span><h2>كل أسبوع</h2></div>
+  <div class="steps">
+    <div class="step"><div class="sn">1</div><div><h3>يوم الأحد: افتح «خطة رحلة هذا الأسبوع»</h3><p>هنا مهام الأسبوع الحالي، وتحتها ما تأخّر من قبل. اقرأها كلها أولًا، ثم وزّعها على أيامك كما يناسبك.</p></div>
+      <div class="mock"><div class="row"><span class="mb gh">WEEK 3</span><span>مهام هذا الأسبوع</span></div></div></div>
+    <div class="step"><div class="sn">2</div><div><h3>أنهِ المهمة، ثم اضغط «أنجزتُها ✈»</h3><p>بعد أن تنهي المهمة فعلًا اضغط <b>«أنجزتُها ✈»</b>، وأرفق رابط عملك إن كانت تمرينًا. تصبح المهمة <b>«قيد المراجعة»</b> حتى يعتمدها أمين، فتصير <b>«معتمد»</b>.</p></div>
+      <div class="mock"><div class="row"><span class="mb">أنجزتُها ✈</span><span class="arrow">←</span><span class="tg wait">قيد المراجعة</span><span class="arrow">←</span><span class="tg ok">معتمد</span></div></div></div>
+    <div class="step"><div class="sn">3</div><div><h3>سجّل ساعات دراستك</h3><p>كلما درست ساعة اضغط <b>«+1»</b> في «المدرسة الأرضية». هدفك الأسبوعي ظاهر أمامك، والدراسة ربع تقدّمك الكامل، لا شيء هنا أهم منها.</p></div>
+      <div class="mock"><div class="row"><span class="mb gh">−1</span><span class="mb">+1 ساعة</span></div><span><bdi dir="ltr">6 / 10</bdi> ساعات هذا الأسبوع</span></div></div>
+    <div class="step"><div class="sn">4</div><div><h3>تحدّي الريلز: ريلزان كل أسبوع</h3><p>في <b>«لوحة المغادرة»</b> فكرتان لريلزَي الأسبوع. جهّزهما قبل نهاية الأسبوع واضغط الحالة لتصير <b>«صُنع»</b>، ثم انشرهما في الأسبوع التالي واضغطها مرة أخرى لتصير <b>«نُشر»</b>. زر 🔗 لإرفاق رابط الريلز.</p></div>
+      <div class="mock"><div class="row"><span class="rs">لم يبدأ <i>SCHEDULED</i></span><span class="arrow">←</span><span class="rs r1">صُنع <i>READY</i></span><span class="arrow">←</span><span class="rs r2">نُشر <i>DEPARTED</i></span></div></div></div>
+    <div class="step"><div class="sn">5</div><div><h3>ضع علامة على عادات الأسبوع</h3><p>عادات صغيرة: قائمة ما قبل الإقلاع، والصندوق الأسود، ومشهد بعين المحلّل، ونشر ريلزَي الأسبوع الماضي، ونصيحة لزميل. ضع العلامة حين تتمّها.</p></div>
+      <div class="mock"><div class="row"><span class="mk on"></span>مشهد بعين المحلّل <span class="mk"></span>نشرتُ ريلزَي الأسبوع الماضي</div></div></div>
+  </div>
+
+  <div class="g-part" id="p3"><span>3</span><h2>أدوات الكابتن</h2></div>
+  <div class="steps">
+    <div class="step"><div class="sn">✓</div><div><h3>قائمة ما قبل الإقلاع</h3><p>قبل كل تصوير، مرّ على البنود واحدًا واحدًا ثم اضغط <b>«جاهز للإقلاع»</b>: البطارية، والموافقة، والضوء، وقائمة اللقطات، والشعور الذي جئت من أجله.</p></div>
+      <div class="mock"><div class="row"><span class="mk on"></span>البطاريات والذاكرة <span class="mk on"></span>الموافقة</div><span class="mb">جاهز للإقلاع ✈</span></div></div>
+    <div class="step"><div class="sn">◼</div><div><h3>الصندوق الأسود (لك وحدك)</h3><p>اكتب أي خطأ أو موقف صعب: ماذا حدث، وماذا تعلّمت. المحتوى خاص بك؛ المشرف يرى العدد فقط. الهدف أن تتعلّم، لا أن تُلام.</p></div>
+      <div class="mock"><div class="mf">ماذا حدث؟</div><div class="mf">ماذا تعلّمت؟</div></div></div>
+    <div class="step"><div class="sn">☁</div><div><h3>تحدّي الكابتن: استراحة قصيرة</h3><p>لعبة صغيرة: حرّك الطائرة بالماوس أو بإصبعك، وتجنّب غيوم التسويف، واجمع اللقطات والأفكار. ثم عُد إلى مهمة واحدة حقيقية.</p></div>
+      <div class="mock"><span class="mb">ابدأ الطيران</span></div></div>
+  </div>
+
+  <div class="g-part" id="p4"><span>4</span><h2>نصائح لتستفيد أكثر</h2></div>
+  <div class="tips">
+    <div class="tip key"><b>دراستك أولًا</b><p>في أسابيع الامتحانات قدّم دراستك على كل شيء. السجلّ صُمّم ليحمي وقت دراستك، لا لينافسه.</p></div>
+    <div class="tip"><b>موعد ثابت</b><p>اختر وقتًا ثابتًا كل أحد لتخطّط أسبوعك، ووقتًا كل خميس لتراجع ما أنجزت وتجهّز ريلزَيك.</p></div>
+    <div class="tip"><b>من الهاتف أيضًا</b><p>افتح الرابط على هاتفك واربط الحفظ بالبيانات نفسها؛ ستجد تقدّمك نفسه على الجهازين.</p></div>
+    <div class="tip"><b>«مزامنة الآن»</b><p>إن عدّلتَ من جهازين، اضغط «مزامنة الآن» قبل أن تبدأ، ليصلك آخر ما حفظته.</p></div>
+    <div class="tip"><b>رفّ الكتب و«شاهد وتعلّم»</b><p>اضغط أي كتاب ليفتح. وفي آخر الصفحة قنوات عربية وإنجليزية، شاهدها بعين المحلّل لا المتفرّج.</p></div>
+    <div class="tip"><b>إن تأخّرت</b><p>لا بأس. المهام المتأخرة لا تختفي؛ أنجزها أولًا ثم أكمل أسبوعك، وتكلّم مع أمين إن احتجت إلى مساعدة.</p></div>
+  </div>
+  <div class="g-end"><a class="btn btn-main" href="./">جاهز للإقلاع؟ افتح سجلّ الطيران ✈</a></div>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <img src="assets/logo-white.png" alt="ممكن" width="102" height="34">
+    <span>وحدة التصوير · المركز الإعلامي · منظمة ممكن للتوعية والإعلام · <bdi dir="ltr">2026</bdi></span>
+  </div>
+</footer>
+</body>
+</html>
